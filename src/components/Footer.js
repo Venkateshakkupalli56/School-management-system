@@ -1,64 +1,75 @@
-// import React from 'react'
-// import '../styles/Footer.css';
-// const Footer = () => {
-//   return (
-//     <div>
-//     </div>
-//   )
-// }
-
-// export default Footer
 import React from "react";
-import  "../styles/Footer.css";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import "../styles/Footer.css";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="footer">
+
       <div className="footer-container">
-        <div className="footer-column">
-          <h3>Bright Future High School</h3>
-          <p>Empowering students to become the leaders of tomorrow.</p>
+
+        <div className="footer-logo">
+          <h2>Bright Future School</h2>
+          <p>
+            Providing quality education with excellence, discipline,
+            and innovation for every student.
+          </p>
         </div>
 
-        <div className="footer-column">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Academics</a></li>
-            <li><a href="#">Facilities</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
+        <div className="footer-links">
+          <h3>Quick Links</h3>
+
+          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+
         </div>
 
-        <div className="footer-column">
-          <h4>Information</h4>
-          <ul>
-            <li><a href="#">Admissions</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">FAQs</a></li>
-          </ul>
-        </div>
+        <div className="footer-contact">
 
-        <div className="footer-column">
-          <h4>Contact Us</h4>
-          <p>123, School Lane,<br />Your City, State - 000001</p>
-          <p>📞 +91-98765-43210</p>
-          <p>✉️ info@bfhs.edu.in</p>
+          <h3>Contact</h3>
+
+          <p>📍 Hyderabad, Telangana</p>
+          <p>📞 +91 9876543210</p>
+          <p>✉️ school@gmail.com</p>
+
           <div className="social-icons">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
+
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaYoutube />
+            </a>
+
           </div>
+
         </div>
+
       </div>
 
       <div className="footer-bottom">
-        <p>© 2024 Bright Future High School. All Rights Reserved.</p>
+        © 2026 Bright Future School | All Rights Reserved
       </div>
+
     </footer>
   );
 };

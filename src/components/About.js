@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/About.css";
+import '../styles/About.css';
 
 import school_image from "../assests/school_image.png";
 
