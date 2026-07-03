@@ -1,0 +1,61 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.facilities{
+    width:100%;
+    padding:60px 8%;
+    background:#f8fbff;
+}
+
+.facilities h1{
+    text-align:center;
+    margin-top: 70px;
+    font-size:38px;
+    color:#0d47a1;
+    margin-bottom:10px;
+}
+
+.facilities>p{
+    text-align:center;
+    color:#666;
+    margin-bottom:40px;
+}
+
+.facility-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.facility-card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+}
+
+.facility-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+.facility-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.facility-card h3{
+    color:#0d47a1;
+    margin-bottom:10px;
+}
+
+.facility-card p{
+    color:#555;
+    line-height:1.6;
+}

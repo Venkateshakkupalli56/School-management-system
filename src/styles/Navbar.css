@@ -1,0 +1,209 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 50px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    z-index:1000;
+}
+
+.logo img{
+    width:70px;
+}
+
+.fields{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    list-style:none;
+}
+
+.fields li{
+    position:relative;
+}
+
+.fields a{
+    text-decoration:none;
+    color:#222;
+    font-size:17px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.fields a:hover,
+.fields a.active{
+    color:#0d6efd;
+}
+
+/* Buttons */
+
+.login-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.login-btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:6px;
+    background:#0d6efd;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+}
+
+.login-btn:hover{
+    background:#0b5ed7;
+}
+
+/* Dropdown */
+
+.login-menu{
+    position:absolute;
+    top:50px;
+    right:0;
+    width:180px;
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.login-menu a{
+    display:block;
+    padding:14px;
+    color:#333;
+    transition:.3s;
+}
+
+.login-menu a:hover{
+    background:#0d6efd;
+    color:#fff;
+}
+
+/* Hamburger */
+
+.menu-icon{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* ================= Laptop ================= */
+
+@media(max-width:1200px){
+
+    .bar{
+        padding:0 30px;
+    }
+
+    .fields{
+        gap:22px;
+    }
+
+}
+
+/* ================= Tablet ================= */
+
+@media(max-width:992px){
+
+    .fields{
+        gap:15px;
+    }
+
+    .login-btn{
+        padding:8px 15px;
+        font-size:14px;
+    }
+
+}
+
+/* ================= Mobile ================= */
+
+@media(max-width:768px){
+
+    .menu-icon{
+        display:block;
+    }
+
+    .fields{
+        position:absolute;
+        top:80px;
+        left:-100%;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+        transition:.4s;
+        box-shadow:0 5px 15px rgba(0,0,0,.1);
+        padding-bottom:20px;
+    }
+
+    .fields.active{
+        left:0;
+    }
+
+    .fields li{
+        width:100%;
+        text-align:center;
+        padding:18px 0;
+        border-bottom:1px solid #eee;
+    }
+
+    .login-container{
+        flex-direction:column;
+        width:100%;
+        padding:10px;
+    }
+
+    .login-btn{
+        width:90%;
+        margin:5px 0;
+    }
+
+    .login-menu{
+        position:static;
+        width:90%;
+        margin-top:10px;
+        box-shadow:none;
+        border:1px solid #ddd;
+    }
+}
+
+/* ================= Small Mobile ================= */
+
+@media(max-width:480px){
+
+    .bar{
+        padding:0 15px;
+    }
+
+    .logo img{
+        width:60px;
+    }
+
+    .menu-icon{
+        font-size:26px;
+    }
+
+    .login-btn{
+        font-size:15px;
+    }
+
+}

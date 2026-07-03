@@ -1,0 +1,481 @@
+.student {
+    margin-top: 150px;
+    margin-left: 30px;
+}
+.student p{
+    margin-top: 20px;
+    font-size: 17px;
+    width: 75%;
+   
+
+}
+.school-image{
+    display: flex;
+}
+.img1 img{
+    width: 100%;
+    margin-top: 160px;
+    margin-left: -30px;
+    border-radius:10px;
+}
+.student span{
+    font-size: 20px;
+    color: skyblue;
+}
+.student h2{
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
+}
+.target,.mission {
+    display: flex;  
+}
+.target{
+    margin-top: 30px;
+    width: 31.5%;
+    padding: 5px;
+    margin-left: 21px;
+    border-radius: 8px;
+    background-color: rgb(228, 221, 221);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.target span{
+    font-size: 40px;
+    margin-left: 200px;
+    color: rgb(97, 97, 164);
+}
+.target h2{
+    text-align: center;
+}
+.target p{
+    text-align: center;
+    margin-top: 10px;
+}
+.target{
+    transition: all 0.4s ease;
+}
+
+.target:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+.types-fields{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.choose h2{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+/* .excellence{
+    border: 1px solid;
+    width: 18.2%;
+    font-size: 20px;
+    padding: 30px;
+    height: 130px;
+    margin-left: 25px;
+    text-align: center;
+    border-radius: 5px;
+} */
+/* .total-students{
+    border: 1px solid;
+    width: 18.2%;
+    text-align: center;
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 5px;
+} */
+.choose{
+    background-color: white;
+    margin-top: 20px;
+    height: 230px;
+}
+.excellence{
+    width: 275px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 30px;
+
+    transition: all 0.4s ease;
+}
+
+.excellence h1 {
+    color: #000;
+    transition: color 0.4s ease;
+}
+
+.excellence p {
+    color: #444;
+    transition: color 0.4s ease;
+}
+
+/* Hover Effect */
+.excellence:hover {
+    background: #2563EB;   /* Blue */
+    border-color: #2563EB;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
+}
+
+.excellence:hover h2,
+.excellence:hover p {
+    color: #fff;
+}
+.total-students {
+    width: 275px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: all 0.4s ease;
+}
+
+.total-students h1 {
+    color: #000;
+    transition: color 0.4s ease;
+}
+
+.total-students p {
+    color: #444;
+    transition: color 0.4s ease;
+}
+
+/* Hover Effect */
+.total-students:hover {
+    background: #2563EB;   /* Blue */
+    border-color: #2563EB;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
+}
+
+.total-students:hover h1,
+.total-students:hover p {
+    color: #fff;
+}
+
+/* ==========================================
+   Large Desktop / TV (1440px and above)
+========================================== */
+
+@media screen and (min-width:1440px){
+
+    .school-image,
+    .mission,
+    .types-fields{
+        justify-content:center;
+    }
+
+}
+
+/* ==========================================
+   Laptop (1200px - 1439px)
+========================================== */
+
+@media screen and (min-width:1200px) and (max-width:1439px){
+
+    .student{
+        width:55%;
+    }
+
+    .img1{
+        width:45%;
+    }
+
+    .img1 img{
+        width:100%;
+        margin-left:0;
+    }
+
+    .target span{
+        margin-left:45%;
+    }
+
+}
+
+/* ==========================================
+   iPad Pro (992px - 1199px)
+========================================== */
+
+@media screen and (min-width:992px) and (max-width:1199px){
+
+    .school-image{
+        align-items:center;
+    }
+
+    .student{
+        width:55%;
+        margin-left:20px;
+    }
+
+    .student p{
+        width:100%;
+    }
+
+    .img1{
+        width:45%;
+    }
+
+    .img1 img{
+        width:100%;
+        margin-left:0;
+    }
+
+    .mission{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .target{
+        width:45%;
+        margin:15px;
+    }
+
+    .target span{
+        margin-left:45%;
+    }
+
+    .types-fields{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .choose{
+        height:auto;
+        padding-bottom:30px;
+    }
+
+}
+
+/* ==========================================
+   Tablet (768px - 991px)
+========================================== */
+
+@media screen and (min-width:768px) and (max-width:991px){
+
+    .school-image{
+        flex-direction:column;
+    }
+
+    .student{
+        margin:120px 20px 20px;
+    }
+
+    .student h2{
+        text-align:center;
+    }
+
+    .student p{
+        width:100%;
+    }
+
+    .img1{
+        width:100%;
+        text-align:center;
+    }
+
+    .img1 img{
+        width:90%;
+        margin:20px 0;
+    }
+
+    .mission{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .target{
+        width:45%;
+        margin:10px;
+    }
+
+    .target span{
+        margin-left:45%;
+    }
+
+    .types-fields{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .excellence,
+    .total-students{
+        width:220px;
+        margin:10px;
+    }
+
+    .choose{
+        height:auto;
+        padding-bottom:30px;
+    }
+
+}
+
+/* ==========================================
+   Mobile (481px - 767px)
+========================================== */
+
+@media screen and (min-width:481px) and (max-width:767px){
+
+    .school-image{
+        flex-direction:column;
+    }
+
+    .student{
+        margin:110px 15px 20px;
+    }
+
+    .student h2{
+        text-align:center;
+        font-size:26px;
+    }
+
+    .student p{
+        width:100%;
+        font-size:16px;
+    }
+
+    .img1{
+        width:100%;
+        text-align:center;
+    }
+
+    .img1 img{
+        width:95%;
+        margin:20px 0;
+    }
+
+    .mission{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .target{
+        width:90%;
+        margin:15px 0;
+    }
+
+    .target span{
+        display:block;
+        text-align:center;
+        margin-left:0;
+    }
+
+    .types-fields{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .excellence,
+    .total-students{
+        width:90%;
+        margin:10px 0;
+    }
+
+    .choose{
+        height:auto;
+        padding-bottom:30px;
+    }
+
+}
+
+/* ==========================================
+   Small Mobile (320px - 480px)
+========================================== */
+
+@media screen and (max-width:480px){
+
+    .school-image{
+        flex-direction:column;
+    }
+
+    .student{
+        margin:100px 15px 20px;
+    }
+
+    .student h2{
+        text-align:center;
+        font-size:22px;
+    }
+
+    .student p{
+        width:100%;
+        font-size:15px;
+    }
+
+    .student span{
+        font-size:18px;
+    }
+
+    .img1{
+        width:100%;
+        text-align:center;
+    }
+
+    .img1 img{
+        width:100%;
+        margin:15px 0;
+    }
+
+    .mission{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .target{
+        width:95%;
+        margin:10px 0;
+        padding:15px;
+    }
+
+    .target span{
+        display:block;
+        text-align:center;
+        margin-left:0;
+        font-size:35px;
+    }
+
+    .target h2{
+        font-size:20px;
+    }
+
+    .target p{
+        font-size:15px;
+    }
+
+    .types-fields{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .excellence,
+    .total-students{
+        width:95%;
+        margin:10px 0;
+    }
+
+    .choose{
+        height:auto;
+        padding-bottom:30px;
+    }
+
+    .choose h2{
+        font-size:26px;
+    }
+
+}

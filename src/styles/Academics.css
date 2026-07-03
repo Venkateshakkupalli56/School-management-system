@@ -1,0 +1,242 @@
+/* ==========================
+   Academics Section
+========================== */
+
+.academics {
+    padding: 80px 8%;
+    background: #F8FBFF;
+    margin-top: 80px;
+}
+
+/* Heading */
+
+.heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.heading span {
+    display: inline-block;
+    background: #E8F1FF;
+    color: #2563EB;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.heading h2 {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #1E293B;
+}
+
+.heading p {
+    width: 60%;
+    margin: 20px auto;
+    color: #64748B;
+    line-height: 28px;
+}
+
+/* ==========================
+   Academic Cards
+========================== */
+
+.academic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.academic-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    border: 1px solid #E2E8F0;
+    transition: .4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.academic-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,#2563EB,#38BDF8);
+    transform: scaleX(0);
+    transition: .4s;
+}
+
+.academic-card:hover::before {
+    transform: scaleX(1);
+}
+
+.academic-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(37,99,235,.20);
+}
+
+/* Icon */
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 50%;
+    background: #EEF5FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2563EB;
+    font-size: 32px;
+    transition: .4s;
+}
+
+.academic-card:hover .icon {
+    background: linear-gradient(135deg,#2563EB,#38BDF8);
+    color: white;
+    transform: rotate(360deg);
+}
+
+.academic-card h3 {
+    margin-top: 25px;
+    color: #1E293B;
+    font-size: 24px;
+}
+
+.academic-card small {
+    color: #2563EB;
+    font-weight: 600;
+}
+
+.academic-card p {
+    margin: 20px 0;
+    color: #64748B;
+    line-height: 26px;
+}
+
+.academic-card button {
+    border: none;
+    background: #2563EB;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    transition: .3s;
+}
+
+.academic-card button:hover {
+    background: #1D4ED8;
+}
+/* ==========================
+   Subjects Section
+========================== */
+
+.subjects-section{
+    margin-top:70px;
+}
+
+.subjects-heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.subjects-heading span{
+    background:#E8F1FF;
+    color:#2563EB;
+    padding:6px 18px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.subjects-heading h2{
+    margin-top:15px;
+    font-size:32px;
+    color:#1E293B;
+}
+
+.subjects-heading p{
+    width:55%;
+    margin:15px auto;
+    color:#64748B;
+    line-height:24px;
+    font-size:15px;
+}
+
+/* Small Cards */
+
+.subjects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:18px;
+}
+
+.subject-card{
+    background:#fff;
+    border:1px solid #E2E8F0;
+    border-radius:14px;
+    padding:20px 15px;
+    text-align:center;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.subject-card span{
+    font-size:34px;
+    display:block;
+    margin-bottom:10px;
+    transition:.35s;
+}
+
+.subject-card h4{
+    font-size:17px;
+    color:#1E293B;
+    font-weight:600;
+    transition:.35s;
+}
+
+.subject-card:hover{
+    background:linear-gradient(135deg,#2563EB,#38BDF8);
+    transform:translateY(-6px);
+    box-shadow:0 10px 20px rgba(37,99,235,.2);
+}
+
+.subject-card:hover span{
+    transform:scale(1.1);
+}
+
+.subject-card:hover h4{
+    color:#fff;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.subjects-heading p{
+    width:100%;
+}
+
+.subjects-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:480px){
+
+.subjects-grid{
+    grid-template-columns:1fr;
+}
+
+}

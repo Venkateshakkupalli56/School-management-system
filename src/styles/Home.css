@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #f5f7fb;
+}
+
+/* ================= HERO SECTION ================= */
+
+.child{
+    position: relative;
+    margin-top: 80px;
+}
+
+.child img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+.btn{
+    position: absolute;
+    left: 8%;
+    bottom: 15%;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.btn:hover{
+    background: #084db8;
+    transform: translateY(-5px);
+}
+
+/* ================= FEATURES ================= */
+
+.sec{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+    padding: 60px 50px;
+    background: #EBF2FE;
+}
+
+.education,
+.teachers,
+.sports{
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    transition: .4s;
+}
+
+.education:hover,
+.teachers:hover,
+.sports:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+
+.education span,
+.teachers span,
+.sports span{
+    font-size: 45px;
+    color: #0d6efd;
+}
+
+.education h4,
+.teachers h4,
+.sports h4{
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+.education p,
+.teachers p,
+.sports p{
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ================= FACILITIES ================= */
+
+.foot{
+    padding: 70px 40px;
+    background: white;
+}
+
+.foot h1{
+    text-align: center;
+    font-size: 36px;
+    color: #0d47a1;
+    margin-bottom: 40px;
+}
+
+.foot1{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+
+.classroom,
+.ground,
+.ground1{
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .4s;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.classroom:hover,
+.ground:hover,
+.ground1:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0,0,0,.15);
+}
+
+.classroom img,
+.ground img,
+.ground1 img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.classroom:hover img,
+.ground:hover img,
+.ground1:hover img{
+    transform: scale(1.08);
+}
+
+.classroom p,
+.ground p,
+.ground1 p{
+    text-align: center;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .4s;
+}
+
+.classroom:hover p,
+.ground:hover p,
+.ground1:hover p{
+    color: #0d6efd;
+}
+
+/* ================= LARGE SCREEN ================= */
+
+@media (max-width:1400px){
+
+.sec{
+    grid-template-columns: repeat(4,1fr);
+}
+
+.foot1{
+    grid-template-columns: repeat(4,1fr);
+}
+
+}
+
+/* ================= LAPTOP ================= */
+
+@media (max-width:1200px){
+
+.sec{
+    grid-template-columns: repeat(2,1fr);
+}
+
+.foot1{
+    grid-template-columns: repeat(2,1fr);
+}
+
+.child img{
+    height: 500px;
+}
+
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:992px){
+
+.child img{
+    height: 420px;
+}
+
+.btn{
+    font-size:16px;
+    padding:12px 28px;
+}
+
+.sec{
+    padding:40px 25px;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.child{
+    margin-top:70px;
+}
+
+.child img{
+    height:300px;
+}
+
+.btn{
+    left:50%;
+    transform:translateX(-50%);
+    bottom:20px;
+    font-size:15px;
+    padding:10px 20px;
+}
+
+.btn:hover{
+    transform:translateX(-50%) translateY(-5px);
+}
+
+.sec{
+    grid-template-columns:1fr;
+    padding:30px 20px;
+}
+
+.foot{
+    padding:40px 20px;
+}
+
+.foot h1{
+    font-size:30px;
+}
+
+.foot1{
+    grid-template-columns:1fr;
+}
+
+.classroom img,
+.ground img,
+.ground1 img{
+    height:220px;
+}
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width:480px){
+
+.child img{
+    height:250px;
+}
+
+.btn{
+    width:180px;
+    font-size:14px;
+}
+
+.education,
+.teachers,
+.sports{
+    padding:20px;
+}
+
+.education span,
+.teachers span,
+.sports span{
+    font-size:38px;
+}
+
+.education h4,
+.teachers h4,
+.sports h4{
+    font-size:20px;
+}
+
+.education p,
+.teachers p,
+.sports p{
+    font-size:15px;
+}
+
+.foot h1{
+    font-size:26px;
+}
+
+.classroom p,
+.ground p,
+.ground1 p{
+    font-size:18px;
+}
+
+}

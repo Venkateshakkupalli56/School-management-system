@@ -1,0 +1,94 @@
+.hero {
+  background: url('https://images.unsplash.com/photo-1517649763962-0c623066013b') center/cover no-repeat;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+/* 
+.navbar {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+}
+
+.navbar a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: white;
+} */
+
+.highlights {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 40px 20px;
+}
+
+.highlight {
+  text-align: center;
+  width: 220px;
+}
+
+.highlight h2 {
+  color: #ff6600;
+  margin-bottom: 10px;
+}
+
+.schedule {
+  background-color: #222;
+  color: white;
+  padding: 50px 20px;
+}
+
+.schedule h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffcc00;
+}
+
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #333;
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid #555;
+  text-align: center;
+}
+
+th {
+  background-color: #444;
+  color: #ffcc00;
+}
+
+footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
