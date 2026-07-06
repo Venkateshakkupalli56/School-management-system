@@ -47,9 +47,6 @@
 .fields a.active{
     color:#0d6efd;
 }
-
-/* Buttons */
-
 .login-container{
     display:flex;
     align-items:center;
@@ -70,9 +67,6 @@
 .login-btn:hover{
     background:#0b5ed7;
 }
-
-/* Dropdown */
-
 .login-menu{
     position:absolute;
     top:50px;
@@ -95,17 +89,11 @@
     background:#0d6efd;
     color:#fff;
 }
-
-/* Hamburger */
-
 .menu-icon{
     display:none;
     font-size:30px;
     cursor:pointer;
 }
-
-/* ================= Laptop ================= */
-
 @media(max-width:1200px){
 
     .bar{
@@ -117,9 +105,6 @@
     }
 
 }
-
-/* ================= Tablet ================= */
-
 @media(max-width:992px){
 
     .fields{
@@ -132,9 +117,6 @@
     }
 
 }
-
-/* ================= Mobile ================= */
-
 @media(max-width:768px){
 
     .menu-icon{
@@ -185,9 +167,6 @@
         border:1px solid #ddd;
     }
 }
-
-/* ================= Small Mobile ================= */
-
 @media(max-width:480px){
 
     .bar{

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../styles/StudentLogin.css';
 const StudentLogin = () => {
+    const navigate = useNavigate();
   const [student, setStudent] = useState({
     email: "",
     password: "",
@@ -21,7 +23,7 @@ const StudentLogin = () => {
     console.log(student);
 
     alert("Student Login Successful");
-
+    navigate('/studentdashboard')
     setStudent({
       email: "",
       password: "",
