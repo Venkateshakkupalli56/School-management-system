@@ -1,75 +1,90 @@
-.subjects-container{
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 20px;
-    margin-top: 80px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-.subjects-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.marks-container{
+    padding:25px;
+    /* background:#f4f7fc; */
+    /* min-height:100vh; */
+    margin-top: 100px;
 }
 
-.subjects-header h2{
-    color: #0d47a1;
-    font-size: 28px;
-    margin-top: 20px;
+.marks-header{
+    margin-bottom:25px;
 }
 
-.subjects-table{
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 10px;
-    color: black;
-    background-color: gray;
+.marks-header h2{
+    color:#0d47a1;
+    font-size:28px;
 }
 
-/* .subjects-table thead{
-    background: #0d47a1;
-    color: #fff;
+.marks-table-container{
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    overflow-x:auto;
+}
+
+.marks-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.marks-table th{
+    background:#0d47a1;
+    color:#fff;
+    padding:15px;
+    text-align:center;
+    font-size:17px;
+}
+
+.marks-table td{
+    padding:15px;
+    text-align:center;
+    /* border-bottom:1px solid #ddd; */
+    font-size:16px;
+    /* cursor: pointer; */
+    background-color: white;
+}
+/* .marks-table tbody tr:hover{
+    background:#f2f8ff;
 } */
-
-.subjects-table th,
-.subjects-table td{
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #e0e0e0;
+.pass{
+    color:green;
+    font-weight:bold;
 }
+@media(max-width:768px){
 
-/* .subjects-table tbody tr:nth-child(even){
-    background: #f8f9fa;
-} */
-
-.subjects-table tbody tr:hover{
-    color: blue;
-    background: #e3f2fd;
-    transition: 0.3s;
-}
-
-.status{
-    padding: 6px 14px;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.status.active{
-    background: #d4edda;
-    color: #155724;
-}
-
-@media (max-width: 768px){
-
-    .subjects-container{
-        overflow-x: auto;
+    .marks-container{
+        padding:15px;
     }
 
-    .subjects-table{
-        min-width: 800px;
+    .marks-header h2{
+        font-size:22px;
     }
+
+    .marks-table th,
+    .marks-table td{
+        padding:12px;
+        font-size:14px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .marks-header h2{
+        font-size:20px;
+    }
+
+    .marks-table th,
+    .marks-table td{
+        font-size:13px;
+        padding:10px;
+    }
+
 }

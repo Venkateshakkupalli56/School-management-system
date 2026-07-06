@@ -1,0 +1,126 @@
+.attendance-container {
+    padding: 20px;
+    min-height: 100vh;
+    margin-top: 100px;
+}
+.attendance-header h2 {
+    margin-bottom: 20px;
+    color: #0D47A1;
+}
+.attendance-cards{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card{
+    background: rgb(194, 232, 234);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.card p{
+    font-size: 16px;
+    font-weight: 500;
+}
+.total-card h3,
+.total-card p{
+    color: #2563eb;
+}
+.present-card h3,
+.present-card p{
+    color: #16a34a;
+}
+.absent-card h3,
+.absent-card p{
+    color: #dc2626;
+}
+
+.leave-card h3,
+.leave-card p{
+    color: #f59e0b;
+}
+.attendance-card h3,
+.attendance-card p{
+    color: #7c3aed;
+}centage h3 {
+    color: #2563eb;
+}
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status.present {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status.absent {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.status.leave {
+    background: #fef3c7;
+    color: #b45309;
+} */
+
+.marks-table-container{
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    overflow-x:auto;
+}
+
+.marks-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.marks-table th{
+    background:#0d47a1;
+    color:#fff;
+    padding:15px;
+    text-align:center;
+    font-size:17px;
+}
+
+.marks-table td{
+    padding:15px;
+    text-align:center;
+    /* border-bottom:1px solid #ddd; */
+    font-size:16px;
+    /* cursor: pointer; */
+    background-color: white;
+}
+.card:hover {
+    transition: transform 0.3s ease;
+    transform: translateY(-5px);
+}
+@media (max-width:768px){
+
+.attendance-cards{
+grid-template-columns: repeat(2,1fr);
+}
+
+}
+
+@media (max-width:500px){
+
+.attendance-cards{
+grid-template-columns:1fr;
+}
+
+}

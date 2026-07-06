@@ -16,6 +16,8 @@ import Registration from "./components/Registration";
 import StudentDashboard from "./components/studentdashboard/StudentDashboard";
 import Marks from "./components/studentdashboard/Marks";
 import Subject from "./components/studentdashboard/Subject";
+import Homework from "./components/studentdashboard/Homework";
+import Attendance from "./components/studentdashboard/Attendance";
 
 const App = () => {
   return (
@@ -43,6 +45,8 @@ const App = () => {
       <Route path="/studentdashboard" element={<StudentDashboard />}>
         <Route path="marks" element={<Marks />} />
         <Route path="subjects" element={<Subject/>}></Route>
+        <Route path="homework" element={<Homework/>}></Route>
+        <Route path="attendance" element={<Attendance/>}></Route>
       </Route>
 
     </Routes>

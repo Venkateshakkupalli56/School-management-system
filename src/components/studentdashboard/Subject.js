@@ -3,13 +3,14 @@ import "../../styles/studentdashboardstyles/Subject.css";
 
 const Subjects = () => {
   return (
-    <div className="subjects-container">
-      <div className="subjects-header">
-        <h2>My Subjects</h2>
+    <div className="marks-container">
+      <div className="marks-header">
+        <h2>Student Subjects</h2>
       </div>
 
-      <table className="subjects-table">
-        <thead>
+      <div className="marks-table-container">
+        <table className="marks-table">
+          <thead>
           <tr>
             <th>Code</th>
             <th>Subject</th>
@@ -82,6 +83,7 @@ const Subjects = () => {
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
   );
 };
