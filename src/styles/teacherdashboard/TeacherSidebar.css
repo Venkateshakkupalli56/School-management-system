@@ -1,0 +1,39 @@
+.teacher-sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    padding-top: 20px;
+    transition: 0.3s;
+    overflow-y: auto;
+}
+
+.teacher-sidebar a {
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+.teacher-sidebar a:hover {
+    background: #34495e;
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.teacher-sidebar{
+    left:-260px;
+    width:250px;
+    z-index:1000;
+}
+
+.teacher-sidebar.show{
+    left:0;
+}
+
+}

@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/* Sidebar */
+
 .sidebar{
     position: fixed;
     top: 80px;
@@ -15,6 +17,8 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 0;
+    transition: transform 0.3s ease;
+    z-index: 1000;
 }
 
 .sidebar-menu{
@@ -42,7 +46,6 @@
 
 .sidebar-menu a.active{
     background: #1976d2;
-    /* border-left: 5px solid #ffd700; */
     font-weight: 600;
 }
 
@@ -50,20 +53,19 @@
     font-size: 20px;
 }
 
-/* Logout Button */
+/* Logout */
 
 .logout-section{
     padding: 20px;
 }
 
 .logout-btn{
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-left: -10px;
-    padding: 15px;
+    padding: 14px;
     border: none;
     border-radius: 8px;
     background: #e53935;
@@ -71,32 +73,46 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 .logout-btn:hover{
     background: #c62828;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* .logout-btn svg{
-    font-size: 15px;
-} */
+/* Overlay */
 
-@media (max-width: 768px){
+.sidebar-overlay{
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+/* Mobile */
+
+@media (max-width:768px){
 
     .sidebar{
-        width: 150px;
+        width:220px;
+        max-width:80%;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open{
+        transform: translateX(0);
     }
 
     .sidebar-menu a{
-        font-size: 15px;
-        padding: 14px 20px;
+        font-size:15px;
+        padding:14px 18px;
     }
 
     .logout-btn{
-        font-size: 15px;
+        font-size:15px;
     }
 
 }

@@ -1,0 +1,37 @@
+.teacher-navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:#fff;
+}
+
+.navbar-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.menu-btn{
+    display:block;
+}
+
+.teacher-navbar h2{
+    font-size:18px;
+}
+
+.navbar-right input{
+    display:none;
+}
+
+}

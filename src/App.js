@@ -10,6 +10,7 @@ import Academics from "./components/Academics";
 import Sports from "./components/Sports";
 import Facilities from "./components/Facilities";
 import StudentLogin from "./components/StudentLogin";
+import TeacherLogin from "./components/TeacherLogin";
 import ContactUs from "./components/ContactUs";
 import Registration from "./components/Registration";
 
@@ -18,6 +19,8 @@ import Marks from "./components/studentdashboard/Marks";
 import Subject from "./components/studentdashboard/Subject";
 import Homework from "./components/studentdashboard/Homework";
 import Attendance from "./components/studentdashboard/Attendance";
+
+import TeacherDashboard from "./components/teacherdashboard/TeacherDashboard";
 
 const App = () => {
   return (
@@ -32,6 +35,7 @@ const App = () => {
               <Route path="/sports" element={<Sports />} />
               <Route path="/facilities" element={<Facilities />} />
               <Route path="/studentlogin" element={<StudentLogin />} />
+              <Route path="/teacherlogin" element={<TeacherLogin />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/registration" element={<Registration />} />
             </Routes>
@@ -48,7 +52,8 @@ const App = () => {
         <Route path="homework" element={<Homework/>}></Route>
         <Route path="attendance" element={<Attendance/>}></Route>
       </Route>
-
+      <Route path="/teacherdashboard" element={<TeacherDashboard />}>
+      </Route>
     </Routes>
   );
 };
