@@ -93,6 +93,12 @@
     display:none;
     font-size:30px;
     cursor:pointer;
+    /* color:#000;
+    z-index:9999; */
+}
+.menu-icon svg{
+    color:#000;
+    font-size:30px;
 }
 @media(max-width:1200px){
 
