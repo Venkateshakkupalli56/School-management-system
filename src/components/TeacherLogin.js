@@ -1,79 +1,83 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../styles/TeacherLogin.css";
 
 const TeacherLogin = () => {
+  const [teacher, setTeacher] = useState({
+    Email: "",
+    Password: ""
+  });
 
   const navigate = useNavigate();
 
-  const [teacher, setTeacher] = useState({
-    email: "",
-    password: "",
-  });
-
   const handleChange = (e) => {
-
-    const { name, value } = e.target;
-
     setTeacher({
       ...teacher,
-      [name]: value,
+      [e.target.name]: e.target.value
     });
-
   };
 
-  const handleSubmit = (e) => {
+  const Login = async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  const response = await fetch(
+    "http://127.0.0.1:8000/teacher_login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(teacher)
+    }
+  );
 
-    console.log(teacher);
+  const data = await response.json();
 
-    alert("Teacher Login Successful");
+  // Wrong email or password
+  if (!response.ok) {
+    alert("Invalid email or password");
+    return;
+  }
 
-    navigate("/teacherdashboard");
+  // Correct login
+  localStorage.setItem("token", data.access_token);
 
-    setTeacher({
-      email: "",
-      password: "",
-    });
+  alert("Login successful");
 
-  };
+  navigate("/teacherdashboard");
+};
 
   return (
     <div className="teacher-login">
-
-      <div className="teacher-login-card">
-
+      <form onSubmit={Login}>
         <h1>Teacher Login</h1>
 
-        <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="Email"
+          placeholder="Enter your Email"
+          value={teacher.Email}
+          onChange={handleChange}
+          required
+        />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Email"
-            value={teacher.email}
-            onChange={handleChange}
-            required
-          />
+        <input
+          type="password"
+          name="Password"
+          placeholder="Enter your Password"
+          value={teacher.Password}
+          onChange={handleChange}
+          required
+        />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Password"
-            value={teacher.password}
-            onChange={handleChange}
-            required
-          />
+        <button type="submit">
+          Login
+        </button>
 
-          <button type="submit">
-            Login
-          </button>
-
-        </form>
-
-      </div>
-
+        <NavLink to="/teacherregister">
+          Create Account
+        </NavLink>
+      </form>
     </div>
   );
 };

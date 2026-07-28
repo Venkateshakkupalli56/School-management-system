@@ -1,69 +1,76 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import '../styles/StudentLogin.css';
+import { useNavigate, NavLink } from "react-router-dom";
+import "../styles/StudentLogin.css";
+
 const StudentLogin = () => {
-    const navigate = useNavigate();
+
   const [student, setStudent] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
     setStudent({
       ...student,
-      [name]: value,
+      [e.target.name]: e.target.value
     });
   };
-
-  const handleSubmit = (e) => {
+  const Login = async (e) => {
     e.preventDefault();
 
-    console.log(student);
+    const response = await fetch(
+      "http://127.0.0.1:8000/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+      }
+    );
 
-    alert("Student Login Successful");
-    navigate('/studentdashboard')
-    setStudent({
-      email: "",
-      password: "",
-    });
+    const data = await response.json();
+
+    console.log(data);
+    if (!response.ok) {
+      alert( "Invalid email or password");
+      return;
+    }
+    alert("Login successful");
+    navigate("/studentdashboard");
   };
 
   return (
-    <div className="student-login">
+    <div className="teacher-login">
 
-      <div className="login-card">
+      <form onSubmit={Login}>
 
         <h1>Student Login</h1>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email"
+          value={student.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          value={student.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">
+          Login
+        </button>
+        <NavLink to="/studentregistration">
+          Create Account
+        </NavLink>
 
-        <form onSubmit={handleSubmit}>
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Email"
-            value={student.email}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Password"
-            value={student.password}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">
-            Login
-          </button>
-
-        </form>
-
-      </div>
+      </form>
 
     </div>
   );

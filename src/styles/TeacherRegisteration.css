@@ -1,0 +1,91 @@
+.teacher-registration {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.teacher-registration form {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.teacher-registration h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #0D6EFD;
+}
+
+.teacher-registration input,
+.teacher-registration select {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.teacher-registration input:focus,
+.teacher-registration select:focus {
+  border-color: #007bff;
+}
+
+.teacher-registration button {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.teacher-registration button:hover {
+  background: #0056b3;
+}
+
+.teacher-registration a {
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.teacher-registration a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+
+  .teacher-registration {
+    padding: 15px;
+  }
+
+  .teacher-registration form {
+    padding: 20px;
+  }
+
+  .teacher-registration h1 {
+    font-size: 24px;
+  }
+
+  .teacher-registration input,
+  .teacher-registration select {
+    font-size: 14px;
+  }
+
+}

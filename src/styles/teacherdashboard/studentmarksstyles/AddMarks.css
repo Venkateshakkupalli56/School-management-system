@@ -1,0 +1,131 @@
+/* Full page container */
+.addmarks-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Form Card */
+.addmarks {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+/* Heading */
+.addmarks h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Form */
+.addmarks form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Each Label + Input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels */
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Inputs */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Input Focus */
+.form-group input:focus {
+    border-color: #007bff;
+}
+
+/* Buttons */
+.button-group {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Add Button */
+.add-btn {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    padding: 12px 30px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Button Hover */
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn:hover {
+    background-color: #b02a37;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .addmarks-container {
+        padding: 15px;
+    }
+
+    .addmarks {
+        padding: 20px;
+    }
+
+    .addmarks form {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        grid-column: 1;
+        flex-direction: column;
+    }
+
+    .add-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}

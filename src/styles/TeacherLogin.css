@@ -1,111 +1,98 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+.teacher-login {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Background */
+  /* background: linear-gradient(135deg, #dbeafe, #ede9fe); */
 }
-
-.teacher-login{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#eef4ff;
-    padding:20px;
+.teacher-login form {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+  border-top: 5px solid #6366f1;
 }
-
-.teacher-login-card{
-    width:500px;
-    background:#fff;
-    padding:50px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+.teacher-login h1 {
+  text-align: center;
+  margin: 0 0 15px;
+  color: #312e81;
+  font-size: 30px;
+  font-weight: 700;
 }
-
-.teacher-login-card h1{
-    text-align:center;
-    color:#1e40af;
-    font-size:35px;
-    margin-bottom:40px;
-    font-weight:bold;
+.teacher-login input {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border: 2px solid #e0e7ff;
+  border-radius: 10px;
+  background: #f8faff;
+  color: #1e293b;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
 }
-
-.teacher-login-card form{
-    display:flex;
-    flex-direction:column;
+.teacher-login input::placeholder {
+  color: #94a3b8;
 }
-
-.teacher-login-card input{
-    width:100%;
-    height:60px;
-    margin-bottom:25px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    padding:0 18px;
-    font-size:20px;
-    outline:none;
+.teacher-login input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
-
-.teacher-login-card input:focus{
-    border:2px solid #2563eb;
+.teacher-login button {
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 10px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
-.teacher-login-card button{
-    width:100%;
-    height:60px;
-    border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:25px;
-    cursor:pointer;
-    transition:.3s;
+.teacher-login button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
 }
-
-.teacher-login-card button:hover{
-    background:#1d4ed8;
+.teacher-login button:active {
+  transform: translateY(0);
 }
-
-/* Tablet */
-
-@media screen and (max-width:768px){
-
-.teacher-login-card{
-    width:90%;
-    padding:35px;
+.teacher-login a {
+  text-align: center;
+  color: #6366f1;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
 }
-
-.teacher-login-card h1{
-    font-size:40px;
+.teacher-login a:hover {
+  color: #4338ca;
+  text-decoration: underline;
 }
+@media (max-width: 500px) {
 
-.teacher-login-card input,
-.teacher-login-card button{
-    height:55px;
-    font-size:22px;
-}
+  .teacher-login {
+    padding: 15px;
+  }
 
-}
+  .teacher-login form {
+    padding: 30px 20px;
+  }
 
-/* Mobile */
-
-@media screen and (max-width:480px){
-
-.teacher-login-card{
-    width:100%;
-    padding:25px;
-}
-
-.teacher-login-card h1{
-    font-size:32px;
-    margin-bottom:25px;
-}
-
-.teacher-login-card input,
-.teacher-login-card button{
-    height:50px;
-    font-size:18px;
-}
-
+  .teacher-login h1 {
+    font-size: 26px;
+  }
 }

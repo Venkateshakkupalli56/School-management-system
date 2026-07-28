@@ -1,56 +1,90 @@
-/* Main Dashboard Layout */
+/* ================================
+   MAIN DASHBOARD
+================================ */
 
 .teacher-dashboard {
-    display: flex;
-    min-height: 100vh;
-    background: #f4f6f9;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fb;
 }
 
-/* Right Side */
 
-.teacher-main {
-    flex: 1;
-    margin-left: 250px;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Navbar */
+/* ================================
+   NAVBAR
+================================ */
 
 .teacher-navbar {
-    position: fixed;
-    top: 0;
-    left: 250px;
-    right: 0;
-    height: 70px;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+
+  z-index: 1000;
 }
 
-/* Page Content */
 
-.teacher-content {
-    margin-top: 70px;
-    padding: 20px;
-    min-height: calc(100vh - 70px);
-    overflow-y: auto;
+/* ================================
+   SIDEBAR
+================================ */
+
+.teacher-sidebar {
+  position: fixed;
+
+  top: 65px;
+  left: 0;
+
+  width: 240px;
+  height: calc(100vh - 65px);
+
+  background-color: #1e293b;
+
+  overflow-y: auto;
+
+  z-index: 900;
 }
 
-/* Responsive */
 
-@media screen and (max-width:768px){
+/* ================================
+   MAIN CONTENT
+================================ */
 
-    .teacher-main{
-        margin-left: 0;
-    }
+.teacher-main-content {
+  margin-left: 240px;
 
-    .teacher-navbar{
-        left: 0;
-    }
+  padding: 90px 30px 30px 30px;
 
-    .teacher-content{
-        padding: 15px;
-    }
+  min-height: 100vh;
 
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .teacher-sidebar {
+    left: -240px;
+
+    transition: left 0.3s ease;
+  }
+
+  .teacher-sidebar.show {
+    left: 0;
+  }
+
+  .teacher-main-content {
+    margin-left: 0;
+
+    padding: 85px 20px 20px 20px;
+  }
 }

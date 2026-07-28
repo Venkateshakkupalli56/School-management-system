@@ -11,7 +11,7 @@ const TeacherSidebar = ({ sidebarOpen, closeSidebar }) => {
       <NavLink to="/teacher/dashboard" onClick={closeSidebar}>Dashboard</NavLink>
       <NavLink to="/teacher/profile" onClick={closeSidebar}>Profile</NavLink>
       <NavLink to="/teacher/students" onClick={closeSidebar}>Students</NavLink>
-      <NavLink to="/teacher/marks" onClick={closeSidebar}>Marks</NavLink>
+      <NavLink to="/teacherdashboard/studentmarks/addmarks" onClick={closeSidebar}>Marks</NavLink>
       <NavLink to="/teacher/attendance" onClick={closeSidebar}>Attendance</NavLink>
       <NavLink to="/teacher/subjects" onClick={closeSidebar}>Subjects</NavLink>
       <NavLink to="/teacher/homework" onClick={closeSidebar}>Homework</NavLink>

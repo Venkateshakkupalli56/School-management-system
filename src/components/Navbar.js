@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "../styles/Navbar.css";
 import school_logo from "../assests/school_logo.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-
-  const navigate = useNavigate();
+  const [showRegister, setShowRegister] = useState(false);
+  // const navigate = useNavigate();
 
   return (
     <nav className="bar">
@@ -54,23 +54,35 @@ const Navbar = () => {
         </li>
 
         <li className="login-container">
-          {/* Registration */}
-          <button
-            className="login-btn"
-            onClick={() => navigate("/registration")}
-          >
-            Registration
-          </button>
+<button
+  className="login-btn"
+  onClick={() => setShowRegister(!showRegister)}
+>
+  Registration
+</button>
+{showRegister && (
+  <div className="login-menu">
+    <NavLink
+      to="/studentregistration"
+      onClick={() => setShowRegister(false)}
+    >
+      Student Registration
+    </NavLink>
 
-          {/* Login Button */}
+    <NavLink
+      to="/teacherregister"
+      onClick={() => setShowRegister(false)}
+    >
+      Teacher Registration
+    </NavLink>
+  </div>
+)}
           <button
             className="login-btn"
             onClick={() => setShowLogin(!showLogin)}
           >
             Login
           </button>
-
-          {/* Login Dropdown */}
           {showLogin && (
             <div className="login-menu">
               <NavLink

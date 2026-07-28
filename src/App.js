@@ -12,7 +12,9 @@ import Facilities from "./components/Facilities";
 import StudentLogin from "./components/StudentLogin";
 import TeacherLogin from "./components/TeacherLogin";
 import ContactUs from "./components/ContactUs";
-import Registration from "./components/Registration";
+import StudentRegisteration from "./components/StudentRegisteration";
+import TeacherRegisteration from "./components/TeacherRegisteration";
+// import Registration from "./components/Registration";
 
 import StudentDashboard from "./components/studentdashboard/StudentDashboard";
 import Marks from "./components/studentdashboard/Marks";
@@ -21,6 +23,9 @@ import Homework from "./components/studentdashboard/Homework";
 import Attendance from "./components/studentdashboard/Attendance";
 
 import TeacherDashboard from "./components/teacherdashboard/TeacherDashboard";
+import StudentMarks from "./components/teacherdashboard/studentmarks/StudentMarks";
+import AddMarks from "./components/teacherdashboard/studentmarks/AddMarks";
+import EditMarks from "./components/teacherdashboard/studentmarks/EditMarks";
 
 const App = () => {
   return (
@@ -36,8 +41,10 @@ const App = () => {
               <Route path="/facilities" element={<Facilities />} />
               <Route path="/studentlogin" element={<StudentLogin />} />
               <Route path="/teacherlogin" element={<TeacherLogin />} />
+              <Route path="/studentregistration" element={<StudentRegisteration/>} />
+              <Route path="/teacherregister" element={<TeacherRegisteration/>} />
               <Route path="/contact" element={<ContactUs />} />
-              <Route path="/registration" element={<Registration />} />
+              {/* <Route path="/registration" element={<Registration />} /> */}
             </Routes>
 
             <Footer />
@@ -53,6 +60,10 @@ const App = () => {
         <Route path="attendance" element={<Attendance/>}></Route>
       </Route>
       <Route path="/teacherdashboard" element={<TeacherDashboard />}>
+     <Route path="studentmarks" element={<StudentMarks />}>
+    <Route path="addmarks" element={<AddMarks />} />
+    <Route path="editmarks" element={<EditMarks/>}/>
+      </Route>
       </Route>
     </Routes>
   );
