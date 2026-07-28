@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../../styles/teacherdashboard/studentmarksstyles/EditMarks.css";
 
 const EditMarks = ({ close, id }) => {
-  const [marksId, setMarksId] = useState("");
+  // const [marksId, setMarksId] = useState("");
   const [edit, setEdit] = useState({
     student_id: "",
     name: "",
