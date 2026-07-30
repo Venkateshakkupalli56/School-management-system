@@ -1,0 +1,183 @@
+/* Main Student Marks Container */
+.studentmarks {
+    width: 100%;
+    min-height: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    background-color: #f5f7fb;
+}
+
+/* Header */
+.marks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 20px 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.marks-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+/* Add Marks Button */
+.marks-header button {
+    padding: 11px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.marks-header button:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* Table Card */
+.marks-table {
+    width: 100%;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.marks-table h2 {
+    margin: 0 0 20px;
+    color: #2c3e50;
+    font-size: 22px;
+}
+
+
+/* Table */
+.marks-table table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #d9dee7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* Table Header */
+.marks-table thead {
+    background-color: #2563eb;
+}
+
+.marks-table th {
+    padding: 15px 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.marks-table th:last-child {
+    border-right: none;
+}
+
+
+/* Table Body */
+.marks-table td {
+    padding: 14px 12px;
+    color: #374151;
+    font-size: 14px;
+    text-align: center;
+
+    /* Lines between cells */
+    border-right: 1px solid #e1e5eb;
+    border-bottom: 1px solid #e1e5eb;
+}
+
+.marks-table td:last-child {
+    border-right: none;
+}
+
+
+/* Remove bottom border from last row */
+.marks-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Alternate Rows */
+.marks-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+
+/* Hover Effect */
+.marks-table tbody tr:hover {
+    background-color: #eef4ff;
+}
+
+
+/* Buttons */
+.marks-table td button {
+    padding: 8px 14px;
+    margin: 2px 4px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* Edit Button */
+.marks-table td button:first-child {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.marks-table td button:first-child:hover {
+    background-color: #d97706;
+}
+
+
+/* Delete Button */
+.marks-table td button:last-child {
+    background-color: #dc2626;
+    color: white;
+}
+
+.marks-table td button:last-child:hover {
+    background-color: #b91c1c;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .studentmarks {
+        padding: 15px;
+    }
+
+    .marks-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .marks-header button {
+        width: 100%;
+    }
+
+    .marks-table {
+        padding: 15px;
+    }
+}

@@ -26,6 +26,7 @@ import TeacherDashboard from "./components/teacherdashboard/TeacherDashboard";
 import StudentMarks from "./components/teacherdashboard/studentmarks/StudentMarks";
 import AddMarks from "./components/teacherdashboard/studentmarks/AddMarks";
 import EditMarks from "./components/teacherdashboard/studentmarks/EditMarks";
+import DeleteMarks from "./components/teacherdashboard/studentmarks/DeleteMarks";
 
 const App = () => {
   return (
@@ -63,6 +64,7 @@ const App = () => {
      <Route path="studentmarks" element={<StudentMarks />}>
     <Route path="addmarks" element={<AddMarks />} />
     <Route path="editmarks" element={<EditMarks/>}/>
+    <Route path="deletemarks" element={<DeleteMarks/>}/>
       </Route>
       </Route>
     </Routes>

@@ -1,75 +1,77 @@
-import React from "react";
-import "../../styles/studentdashboardstyles/Marks.css";
-
+import React, { useState } from "react";
+import '../../styles/studentdashboardstyles/Marks.css';
 const Marks = () => {
+
+  const [student_id, setStudent_id] = useState("");
+  const [marks, setMarks] = useState([]);
+
+  const search = async () => {
+
+    const response = await fetch(
+      `http://127.0.0.1:8000/student/${student_id}`
+    );
+
+    const data = await response.json();
+
+    // console.log(data);
+
+    setMarks(data);
+  };
+
   return (
-    <div className="marks-container">
+    <div>
 
-      <div className="marks-header">
-        <h2>Student Marks</h2>
+      <div className="enter-student">
+
+        <input
+          type="text"
+          placeholder="Enter your student ID"
+          name="student_id"
+          value={student_id}
+          onChange={(e) => setStudent_id(e.target.value)}
+        />
+
+        <button onClick={search}>
+          Search
+        </button>
+
       </div>
 
-      <div className="marks-table-container">
-        <table className="marks-table">
-          <thead>
-            <tr>
-              <th>S.No</th>
-              <th>Subject</th>
-              <th>Max Marks</th>
-              <th>Marks Obtained</th>
-              <th>Grade</th>
-              <th>Result</th>
-            </tr>
-          </thead>
+      <table>
 
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mathematics</td>
-              <td>100</td>
-              <td>92</td>
-              <td>A+</td>
-              <td className="pass">Pass</td>
-            </tr>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Exam</th>
+            <th>Marks Obtained</th>
+            <th>Total Marks</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
 
-            <tr>
-              <td>2</td>
-              <td>Science</td>
-              <td>100</td>
-              <td>88</td>
-              <td>A</td>
-              <td className="pass">Pass</td>
+        <tbody>
+
+          {marks.map((item) => (
+
+            <tr key={item.id}>
+
+              <td>{item.student_id}</td>
+              <td>{item.name}</td>
+              <td>{item.subject}</td>
+              <td>{item.exam}</td>
+              <td>{item.marks_obtained}</td>
+              <td>{item.total_marks}</td>
+              <td>{item.grade}</td>
+
             </tr>
 
-            <tr>
-              <td>3</td>
-              <td>English</td>
-              <td>100</td>
-              <td>90</td>
-              <td>A+</td>
-              <td className="pass">Pass</td>
-            </tr>
+          ))}
 
-            <tr>
-              <td>4</td>
-              <td>Social</td>
-              <td>100</td>
-              <td>84</td>
-              <td>B+</td>
-              <td className="pass">Pass</td>
-            </tr>
+        </tbody>
 
-            <tr>
-              <td>5</td>
-              <td>Computer</td>
-              <td>100</td>
-              <td>96</td>
-              <td>O</td>
-              <td className="pass">Pass</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      </table>
 
     </div>
   );
