@@ -12,9 +12,9 @@ const TeacherSidebar = ({ sidebarOpen, closeSidebar }) => {
       <NavLink to="/teacher/profile" onClick={closeSidebar}>Profile</NavLink>
       <NavLink to="/teacher/students" onClick={closeSidebar}>Students</NavLink>
       <NavLink to="/teacherdashboard/studentmarks/addmarks" onClick={closeSidebar}>Marks</NavLink>
-      <NavLink to="/teacher/attendance" onClick={closeSidebar}>Attendance</NavLink>
+      <NavLink to="/teacherdashboard/studentattendance" onClick={closeSidebar}>Attendance</NavLink>
       <NavLink to="/teacher/subjects" onClick={closeSidebar}>Subjects</NavLink>
-      <NavLink to="/teacher/homework" onClick={closeSidebar}>Homework</NavLink>
+      <NavLink to="/teacherdashboard/homework" onClick={closeSidebar}>Homework</NavLink>
       <NavLink to="/teacher/results" onClick={closeSidebar}>Results</NavLink>
       <NavLink to="/teacher/timetable" onClick={closeSidebar}>Timetable</NavLink>
       <NavLink to="/teacher/notices" onClick={closeSidebar}>Notices</NavLink>

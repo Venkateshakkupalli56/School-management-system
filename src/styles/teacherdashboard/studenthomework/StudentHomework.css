@@ -1,0 +1,90 @@
+.homework-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin-top: 30px;
+}
+
+.homework {
+  width: 450px;
+  max-width: 90%;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.homework h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.home-work {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.home-work label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.home-work input,
+.home-work textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.home-work input:focus,
+.home-work textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.home-work textarea {
+  height: 90px;
+  resize: vertical;
+}
+
+.homework-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.homework-buttons button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-homework-btn {
+  background: #007bff;
+  color: white;
+}
+
+.cancel-homework-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.add-homework-btn:hover,
+.cancel-homework-btn:hover {
+  opacity: 0.9;
+}

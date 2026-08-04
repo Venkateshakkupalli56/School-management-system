@@ -1,95 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/studentdashboardstyles/Attendance.css";
 
-const Attendance = () => {
+const Marks = () => {
+  const [student_id, setStudent_id] = useState("");
+  const [attendance, setAttendance] = useState([]);
+
+  const search = async () => {
+      const response = await fetch(
+        `http://127.0.0.1:8000/attendance/student_attendence/${student_id}`,
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setAttendance(data);
+      } else {
+        alert("Attendance not found");
+        setAttendance([]);
+      }
+  };
+
   return (
-    <div className="attendance-container">
-      <div className="attendance-header">
-        <h2>Attendance Dashboard</h2>
+    <div className="student-attendance-page">
+      <div className="enter-student">
+        <h2>Attendance</h2>
+        <input
+          type="text"
+          placeholder="Enter your student ID"
+          name="student_id"
+          value={student_id}
+          onChange={(e) => setStudent_id(e.target.value)}
+        />
+
+        <button onClick={search}>Search</button>
       </div>
-     <div className="attendance-cards">
-  <div className="card total-card">
-    <h3>50</h3>
-    <p>Total Classes</p>
-  </div>
-
-  <div className="card present-card">
-    <h3>40</h3>
-    <p>Present</p>
-  </div>
-
-  <div className="card absent-card">
-    <h3>9</h3>
-    <p>Absent</p>
-  </div>
-
-  <div className="card leave-card">
-    <h3>1</h3>
-    <p>Leave</p>
-  </div>
-
-  <div className="card attendance-card">
-    <h3>80%</h3>
-    <p>Attendance</p>
-  </div>
-</div>
-      <div className="marks-table-container">
-        <table className="marks-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Day</th>
-              <th>Status</th>
-              <th>Permission</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>01/07/2026</td>
-              <td>Wednesday</td>
-              <td>Present</td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <td>02/07/2026</td>
-              <td>Thursday</td>
-              <td>Present</td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <td>03/07/2026</td>
-              <td>Friday</td>
-              <td>Absent</td>
-              <td>Class Teacher</td>
-            </tr>
-
-            <tr>
-              <td>04/07/2026</td>
-              <td>Saturday</td>
-              <td>Present</td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <td>05/07/2026</td>
-              <td>Monday</td>
-              <td>Absent</td>
-              <td>Class Teacher</td>
-            </tr>
-              <tr>
-              <td>06/07/2026</td>
-              <td>Tuesday</td>
-              <td>Present</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="attendance-cards">
+        {attendance.map((item) => (
+          <div className="attendance-card" key={item.id}>
+            <h2>Attendance Details</h2>
+            <div className="student-info">
+              <p>
+                <strong>Student ID:</strong>
+                <span>{item.student_id}</span>
+              </p>
+              <p>
+                <strong>Name:</strong>
+                <span>{item.name}</span>
+              </p>
+            </div>
+            <div className="attendance-details">
+              <div className="attendance-box">
+                <h3>Total Classes</h3>
+                <p>{item.total_classes}</p>
+              </div>
+              <div className="attendance-box present">
+                <h3>Present</h3>
+                <p>{item.present}</p>
+              </div>
+              <div className="attendance-box absent">
+                <h3>Absent</h3>
+                <p>{item.absent}</p>
+              </div>
+              <div className="attendance-box percentage">
+                <h3>Percentage</h3>
+                <p>{item.percentage}%</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Attendance;
+export default Marks;
