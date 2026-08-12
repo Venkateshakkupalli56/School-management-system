@@ -1,44 +1,27 @@
-import React, { useState } from "react";
-import '../../styles/studentdashboardstyles/Marks.css';
+import React, { useEffect, useState } from "react";
+import "../../styles/studentdashboardstyles/Marks.css";
 const Marks = () => {
-
-  const [student_id, setStudent_id] = useState("");
   const [marks, setMarks] = useState([]);
-
-  const search = async () => {
-
-    const response = await fetch(
-      `http://127.0.0.1:8000/student/${student_id}`
-    );
-
-    const data = await response.json();
-
-    // console.log(data);
-
-    setMarks(data);
-  };
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetch("http://127.0.0.1:8000/get_student_marks", {
+      method: "GET",
+      headers: {
+        'Authorization':`Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMarks(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div>
-
-      <div className="enter-student">
-
-        <input
-          type="text"
-          placeholder="Enter your student ID"
-          name="student_id"
-          value={student_id}
-          onChange={(e) => setStudent_id(e.target.value)}
-        />
-
-        <button onClick={search}>
-          Search
-        </button>
-
-      </div>
-
+      <h2>Student Marks</h2>
       <table>
-
         <thead>
           <tr>
             <th>Student ID</th>
@@ -50,29 +33,20 @@ const Marks = () => {
             <th>Grade</th>
           </tr>
         </thead>
-
         <tbody>
-
           {marks.map((item) => (
-
             <tr key={item.id}>
-
               <td>{item.student_id}</td>
               <td>{item.name}</td>
               <td>{item.subject}</td>
               <td>{item.exam}</td>
               <td>{item.marks_obtained}</td>
-              <td>{item.total_marks}</td>
+              <td>{item.total}</td>
               <td>{item.grade}</td>
-
             </tr>
-
           ))}
-
         </tbody>
-
       </table>
-
     </div>
   );
 };

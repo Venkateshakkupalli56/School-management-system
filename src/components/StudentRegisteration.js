@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import '../styles/StudentRegisteration.css';
+import "../styles/StudentRegisteration.css";
+
 const StudentRegisteration = () => {
 
   const [student, setStudent] = useState({
     student_id: "",
     name: "",
-    phone_no: "",
+    phone: "",
     email: "",
     password: "",
     class_name: "",
@@ -22,161 +23,143 @@ const StudentRegisteration = () => {
     });
   };
 
-  const StudentRegister = async (e) => {
-
+  const studentregister = (e) => {
     e.preventDefault();
-    if (!/^[0-9]{10}$/.test(student.phone_no)) {
+
+    // Phone Validation
+    if (!/^[0-9]{10}$/.test(student.phone)) {
       alert("Phone number must contain exactly 10 digits");
       return;
     }
+
+    // Email Validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(student.email)) {
       alert("Enter a valid email address");
       return;
     }
+
+    // Password Validation
     if (student.password.length < 8) {
       alert("Password must contain at least 8 characters");
       return;
     }
-      const Response = await fetch(
-        "http://127.0.0.1:8000/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(student)
-        }
-      );
 
-      const studentdata = await Response.json();
-
-      console.log(studentdata);
-     if (!Response.ok) {
-  alert(studentdata.detail || "Registration failed");
-  return;
-}
-if (studentdata.message) {
-  alert(studentdata.message);
-} else {
-  alert("Registered successfully");
-    window.location.reload();
-}
-  };
+fetch("http://127.0.0.1:8000/StudentRegister", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(student)
+})
+ .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      alert("Student Updated Successfully");
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Update Failed");
+    });
+  }
 
   return (
-    <div>
+    <div className="student-registration">
 
-      <div className="student-registration">
+      <form onSubmit={studentregister}>
 
-        <form onSubmit={StudentRegister}>
+        <h1>Student Registration</h1>
 
-          <h1>Student Registration</h1>
+        <input
+          type="text"
+          name="student_id"
+          placeholder="Enter your ID"
+          value={student.student_id}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Student ID */}
-          <input
-            type="text"
-            name="student_id"
-            placeholder="Enter your ID"
-            value={student.student_id}
-            onChange={handlechange}
-            required
-          />
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your Name"
+          value={student.name}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Name */}
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            value={student.name}
-            onChange={handlechange}
-            required
-          />
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email"
+          value={student.email}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Email */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your Email"
-            value={student.email}
-            onChange={handlechange}
-            required
-          />
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Enter your Phone Number"
+          value={student.phone}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Phone */}
-          <input
-            type="tel"
-            name="phone_no"
-            placeholder="Enter your Phone"
-            value={student.phone_no}
-            onChange={handlechange}
-            maxLength="10"
-            required
-          />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          value={student.password}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Password */}
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your Password"
-            value={student.password}
-            onChange={handlechange}
-            required
-          />
+        <input
+          type="text"
+          name="class_name"
+          placeholder="Enter your Class"
+          value={student.class_name}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Class */}
-          <input
-            type="text"
-            name="class_name"
-            placeholder="Enter your Class"
-            value={student.class_name}
-            onChange={handlechange}
-            required
-          />
+        <input
+          type="date"
+          name="dob"
+          value={student.dob}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Date of Birth */}
-          <input
-            type="date"
-            name="dob"
-            value={student.dob}
-            onChange={handlechange}
-            required
-          />
+        <select
+          name="gender"
+          value={student.gender}
+          onChange={handlechange}
+          required
+        >
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
 
-          {/* Gender */}
-          <select
-            name="gender"
-            value={student.gender}
-            onChange={handlechange}
-            required
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
+        <input
+          type="text"
+          name="address"
+          placeholder="Enter your Address"
+          value={student.address}
+          onChange={handlechange}
+          required
+        />
 
-          {/* Address */}
-          <input
-            type="text"
-            name="address"
-            placeholder="Enter your Address"
-            value={student.address}
-            onChange={handlechange}
-            required
-          />
+        <button type="submit">
+          Register
+        </button>
 
-          {/* Register */}
-          <button type="submit">
-            Register
-          </button>
+        <NavLink to="/studentlogin">
+          Login
+        </NavLink>
 
-          {/* Login */}
-          <NavLink to="/studentlogin">
-            Login
-          </NavLink>
-
-        </form>
-
-      </div>
+      </form>
 
     </div>
   );

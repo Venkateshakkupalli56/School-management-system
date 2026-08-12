@@ -4,8 +4,8 @@ import "../styles/TeacherLogin.css";
 
 const TeacherLogin = () => {
   const [teacher, setTeacher] = useState({
-    Email: "",
-    Password: ""
+    email: "",
+    password: ""
   });
 
   const navigate = useNavigate();
@@ -54,18 +54,18 @@ const TeacherLogin = () => {
 
         <input
           type="email"
-          name="Email"
+          name="email"
           placeholder="Enter your Email"
-          value={teacher.Email}
+          value={teacher.email}
           onChange={handleChange}
           required
         />
 
         <input
           type="password"
-          name="Password"
+          name="password"
           placeholder="Enter your Password"
-          value={teacher.Password}
+          value={teacher.password}
           onChange={handleChange}
           required
         />

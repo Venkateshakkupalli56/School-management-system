@@ -3,16 +3,15 @@ import { NavLink } from 'react-router-dom';
 import '../styles/TeacherRegisteration.css';
 const TeacherRegistration = () => {
   const[teacher,setTeacher]=useState({
-    TeacherID:"",
-    Name:"",
-    Phone:"",
-    Email:"",
-    Password:"",
-    Confirm_password:"",
-    Subject:"",
-    Qualification:"",
-    Gender:"",
-    Address:""
+    teacher_id:"",
+    name:"",
+    phone:"",
+    email:"",
+    password:"",
+    subject:"",
+    qualification:"",
+    gender:"",
+    address:""
   })
   const handlechange=(e)=>{
     setTeacher({
@@ -22,28 +21,28 @@ const TeacherRegistration = () => {
   };
   const Register=async(e)=>{
     e.preventDefault();
-     if(teacher.Password!==teacher.Confirm_password){
-      alert('password does not match')
-      return
-    }
-      if (!/^[0-9]{10}$/.test(teacher.Phone)) {
+    //  if(teacher.Password!==teacher.Confirm_password){
+    //   alert('password does not match')
+    //   return
+    // }
+      if (!/^[0-9]{10}$/.test(teacher.phone)) {
     alert("Phone number must contain exactly 10 digits");
     return;
   }
 
   // Check email
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(teacher.Email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(teacher.email)) {
     alert("Enter a valid email address");
     return;
   }
 
   // Check password length
-  if (teacher.Password.length < 8) {
+  if (teacher.password.length < 8) {
     alert("Password must contain at least 8 characters");
     return;
   }
     const response=await fetch(
-      "http://127.0.0.1:8000/teacher_registration",{
+      "http://127.0.0.1:8000/teacher",{
         method:'POST',
         headers:{
                "Content-Type": "application/json"
@@ -52,18 +51,19 @@ const TeacherRegistration = () => {
       }
     )
     const teacherdata=await response.json();
-      if (!response.ok) {
-    if (teacherdata.detail) {
-      alert("Registration failed. Please check your details.");
-    }
-    return;
-  }
-    if(teacherdata.message){
-      alert(teacherdata.message)
-      return
-    }
-    alert('register successfully')
-    window.location.reload();
+    if (response.ok) {
+      console.log(teacherdata);
+      alert("Teacher Registered Successfully");
+      window.location.reload();
+    } else {
+      console.log(teacherdata);
+
+      if (teacherdata.detail) {
+        alert(teacherdata.detail);
+      } else {
+        alert("Registration Failed");
+      }
+    } 
   }
   return (
     <div>
@@ -71,57 +71,51 @@ const TeacherRegistration = () => {
         <form onSubmit={Register}>
           <h1>Teacher Registeration</h1>
           <input type='text'
-          name='TeacherID'
+          name='teacher_id'
           placeholder='Enter your ID'
-          value={teacher.TeacherID}
+          value={teacher.teacher_id}
           onChange={handlechange}
           required/>
          <input type='text'
-         name='Name'
+         name='name'
          placeholder='Enter your name'
-         value={teacher.Name} 
+         value={teacher.name} 
          onChange={handlechange}
          required/>
          <input type='text'
-         name='Email'
+         name='email'
          placeholder='Enter your Email'
-         value={teacher.Email}
+         value={teacher.email}
          onChange={handlechange}
          required/>
         <input
          type="tel"
-         name="Phone"
+         name="phone"
          placeholder="Enter your Phone"
-         value={teacher.Phone}
+         value={teacher.phone}
          onChange={handlechange}
          required/>
         <input type='text'
-         name='Password'
+         name='password'
          placeholder='Enter your Password'
-         value={teacher.Password}
-         onChange={handlechange}
-         required/>
-        <input type='text'
-         name='Confirm_password'
-         placeholder='Enter your Confirm password'
-         value={teacher.Confirm_password}
+         value={teacher.password}
          onChange={handlechange}
          required/>
        <input type='text'
-         name='Subject'
+         name='subject'
          placeholder='Enter your Subject'
-         value={teacher.Subject}
+         value={teacher.subject}
          onChange={handlechange}
          required/>
       <input type='text'
-         name='Qualification'
+         name='qualification'
          placeholder='Enter your Qualification'
-         value={teacher.Qualification}
+         value={teacher.qualification}
          onChange={handlechange}
          required/>
           <select
-            name="Gender"
-            value={teacher.Gender}
+            name="gender"
+            value={teacher.gender}
             onChange={handlechange}
             required>
             <option value="">Select Gender</option>
@@ -129,9 +123,9 @@ const TeacherRegistration = () => {
             <option value="Female">Female</option>
           </select>
      <input type='text'
-         name='Address'
+         name='address'
          placeholder='Enter your Address'
-         value={teacher.Address}
+         value={teacher.address}
          onChange={handlechange}
          required/>
       <button type='submit'>Register</button>

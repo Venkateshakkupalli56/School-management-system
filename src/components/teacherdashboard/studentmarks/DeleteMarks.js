@@ -1,39 +1,56 @@
-import React from "react";
-import "../../../styles/teacherdashboard/studentmarksstyles/DeleteMarks.css";
-
+import React from 'react';
+import '../../../styles/teacherdashboard/studentmarksstyles/DeleteMarks.css';
 const DeleteMarks = ({ id, close }) => {
-  const handleDelete = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
-    const data = await response.json();
-    console.log(data);
+    const handleDelete = () => {
 
-    if (response.ok) {
-      alert("Deleted successfully");
-      close();
-    } else {
-      alert("Data cannot be deleted");
-    }
-  };
+        const token = localStorage.getItem('token');
 
-  return (
-    <div className="delete-marks">
-      <h1>Delete Marks</h1>
+        fetch(`http://127.0.0.1:8000/marks/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            alert('Deleted successfully');
+            close();
+        })
+        .catch((error) => {
+            console.log(error);
+            alert('Data cannot be deleted');
+        });
+    };
 
-      <p>Are you sure you want to delete marks?</p>
+    return (
+    <div className="delete-overlay">
 
-      <div className="delete-btn">
-        <button onClick={handleDelete}>Delete</button>
+        <div className="delete-modal">
 
-        <button onClick={close}>Cancel</button>
-      </div>
+            <h2>Are you sure you want to delete?</h2>
+
+            <div className="delete-buttons">
+
+                <div className="delete-btn123">
+                    <button onClick={handleDelete}>
+                        Delete
+                    </button>
+                </div>
+
+                <div className="cancel-btn123">
+                    <button onClick={close}>
+                        Cancel
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  );
+);
 };
 
 export default DeleteMarks;

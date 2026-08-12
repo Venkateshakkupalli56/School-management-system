@@ -2,111 +2,235 @@ import React, { useEffect, useState } from "react";
 import AddMarks from "./AddMarks";
 import EditMarks from "./EditMarks";
 import DeleteMarks from "./DeleteMarks";
-
 import "../../../styles/teacherdashboard/studentmarksstyles/StudentMarks.css";
 
 const StudentMarks = () => {
-  const [showAddMarks, setShowAddMarks] = useState(false);
-  const [showEditMarks, setShowEditMarks] = useState(false);
-  const [deletemarks, setDeletemarks] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-  const [get, setGet] = useState([]);
+  const [addmarks, setAddmarks] = useState(false);
+  const [editmarks, setEditmarks] = useState(false);
+  const [deletem, setDeletem] = useState(false);
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/all")
+  const [alldata, setAlldata] = useState([]);
+
+  // Selected student details
+  const [selectedStudent, setSelectedStudent] = useState(null);
+
+  // Search
+  const [name, setName] = useState("");
+
+  // =========================
+  // GET ALL MARKS
+  // =========================
+
+  const getMarks = () => {
+    const token = localStorage.getItem("token");
+
+    fetch("http://127.0.0.1:8000/all_marks", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        setGet(data);
+        console.log("API DATA:", data);
+
+        setAlldata(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
+  };
+
+  // =========================
+  // PAGE LOAD
+  // =========================
+
+  useEffect(() => {
+    getMarks();
   }, []);
 
+  // =========================
+  // SEARCH INPUT
+  // =========================
+
+  const change = (e) => {
+    setName(e.target.value);
+  };
+
+  // =========================
+  // SEARCH BY NAME
+  // =========================
+
+  const Name = (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+
+    fetch(`http://127.0.0.1:8000/marks/search?name=${name}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        alert("Name not found");
+      })
+      .then((data) => {
+        if (data) {
+          console.log("SEARCH DATA:", data);
+
+          setAlldata(data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <div className="studentmarks">
-      {/* Add Marks Button */}
-      {!showAddMarks && !showEditMarks && !deletemarks && (
-        <div className="marks-header">
-          <h1>Student Marks</h1>
+    <div className="student-marks">
+      {/* =========================
+                SEARCH
+            ========================= */}
 
-          <button onClick={() => setShowAddMarks(true)}>+ Add Marks</button>
-        </div>
-      )}
+      <div className="change">
+        <form onSubmit={Name}>
+          <input
+            type="text"
+            placeholder="Search by using student name"
+            name="name"
+            value={name}
+            onChange={change}
+          />
 
-      {/* Add Marks Component */}
-      {showAddMarks && <AddMarks close={() => setShowAddMarks(false)} />}
+          <button type="submit">Search</button>
+        </form>
+      </div>
 
-      {/* Edit Marks Component */}
-      {showEditMarks && (
-        <EditMarks id={selectedId} close={() => setShowEditMarks(false)} />
-      )}
-      {deletemarks && (
-        <DeleteMarks id={selectedId} close={() => setDeletemarks(false)} />
-      )}
+      {/* =========================
+                ADD MARKS
+            ========================= */}
 
-      {/* Student Marks Table */}
-      {!showAddMarks && !showEditMarks && !deletemarks && (
-        <div className="marks-table">
-          <h2>Student Marks List</h2>
+      <div className="add-marks-container">
+        <button onClick={() => setAddmarks(true)}>+ Add Marks</button>
+      </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th>SI.NO</th>
-                <th>Student ID</th>
-                <th>Student Name</th>
-                <th>Subject Name</th>
-                <th>Exam</th>
-                <th>Student Marks</th>
-                <th>Total Marks</th>
-                <th>Grade</th>
-                <th>Edit</th>
-                <th>Delete</th>
+      {/* =========================
+                MARKS TABLE
+            ========================= */}
+
+      <div className="table-data">
+        <table>
+          <thead>
+            <tr>
+              <th>SI.No</th>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Subject</th>
+              <th>Marks Obtained</th>
+              <th>Total</th>
+              <th>Grade</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {alldata.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+
+                <td>{item.student_id}</td>
+
+                <td>{item.name}</td>
+
+                <td>{item.subject}</td>
+
+                <td>{item.marks_obtained}</td>
+
+                <td>{item.total}</td>
+
+                <td>{item.grade}</td>
+
+                <td>
+                  {/* EDIT */}
+
+                  <button
+                    onClick={() => {
+                      setSelectedStudent(item);
+
+                      setEditmarks(true);
+                    }}
+                  >
+                    Edit
+                  </button>
+
+                  {/* DELETE */}
+
+                  <button
+                    onClick={() => {
+                      setSelectedStudent(item);
+
+                      setDeletem(true);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
-            </thead>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-            <tbody>
-              {get.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
+      {/* =========================
+                ADD MARKS MODAL
+            ========================= */}
 
-                  <td>{item.student_id}</td>
+      {addmarks && (
+        <AddMarks
+          close={() => {
+            setAddmarks(false);
 
-                  <td>{item.name}</td>
+            getMarks();
+          }}
+        />
+      )}
 
-                  <td>{item.subject}</td>
+      {/* =========================
+                EDIT MARKS MODAL
+            ========================= */}
 
-                  <td>{item.exam}</td>
+      {editmarks && selectedStudent && (
+        <EditMarks
+          data={selectedStudent}
+          close={() => {
+            setEditmarks(false);
 
-                  <td>{item.marks_obtained}</td>
+            setSelectedStudent(null);
+          }}
+          refresh={getMarks}
+        />
+      )}
 
-                  <td>{item.total_marks}</td>
+      {/* =========================
+                DELETE MARKS MODAL
+            ========================= */}
 
-                  <td>{item.grade}</td>
+      {deletem && selectedStudent && (
+        <DeleteMarks
+          id={selectedStudent.id}
+          close={() => {
+            setDeletem(false);
 
-                  <td>
-                    <button
-                      onClick={() => {
-                        setSelectedId(item.id);
-                        setShowEditMarks(true);
-                      }}
-                    >
-                      Edit
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        setSelectedId(item.id);
-                        setDeletemarks(true);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            setSelectedStudent(null);
+
+            getMarks();
+          }}
+        />
       )}
     </div>
   );

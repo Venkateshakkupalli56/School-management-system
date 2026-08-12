@@ -1,164 +1,236 @@
 import React, { useState } from "react";
 import "../../../styles/teacherdashboard/studentmarksstyles/EditMarks.css";
 
-const EditMarks = ({ close, id }) => {
-  // const [marksId, setMarksId] = useState("");
-  const [edit, setEdit] = useState({
-    student_id: "",
-    name: "",
-    subject: "",
-    exam: "",
-    marks_obtained: "",
-    total_marks: "",
-    grade: "",
-  });
+const EditMarks = ({ data, close, refresh }) => {
 
-  const handlechange = (e) => {
-    setEdit({
-      ...edit,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const updatemarks = async (e) => {
-    e.preventDefault();
-
-    console.log("ID:", id);
-    console.log("Data:", edit);
-
-    const response = await fetch(`http://127.0.0.1:8000/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(edit),
+    const [update, setUpdate] = useState({
+        student_id: data.student_id,
+        name: data.name,
+        subject: data.subject,
+        exam: data.exam,
+        marks_obtained: data.marks_obtained,
+        total: data.total,
+        grade: data.grade
     });
 
-    const data = await response.json();
 
-    console.log("Response:", data);
+    // CHANGE INPUT
+    const change = (e) => {
 
-    if (response.ok) {
-      alert("Updated successfully");
-      close();
-    } else {
-      alert("Marks cannot be updated");
-      console.log(data);
-    }
-  };
+        setUpdate({
+            ...update,
+            [e.target.name]: e.target.value
+        });
 
-  return (
-    <div className="editmarks-container">
-      <div className="editmarks">
-        <h1>Edit Student Marks</h1>
+    };
 
-        <form onSubmit={updatemarks}>
-          <div className="form-group">
-            <label>Student ID</label>
-            <input
-              type="number"
-              name="student_id"
-              placeholder="Enter student ID"
-              value={edit.student_id}
-              onChange={handlechange}
-              required
-            />
-          </div>
-          {/* <div className="form-group">
-            <label>S.No / Marks ID</label>
-            <input
-              type="number"
-              placeholder="Enter S.No"
-              value={marksId}
-              onChange={(e) => setMarksId(e.target.value)}
-              required
-            />
-          </div> */}
-          <div className="form-group">
-            <label>Student Name</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter student name"
-              value={edit.name}
-              onChange={handlechange}
-              required
-            />
-          </div>
 
-          <div className="form-group">
-            <label>Subject</label>
-            <input
-              type="text"
-              name="subject"
-              placeholder="Enter subject"
-              value={edit.subject}
-              onChange={handlechange}
-              required
-            />
-          </div>
+    // UPDATE MARKS
+    const marks = (e) => {
 
-          <div className="form-group">
-            <label>Exam</label>
-            <input
-              type="text"
-              name="exam"
-              placeholder="Enter exam"
-              value={edit.exam}
-              onChange={handlechange}
-              required
-            />
-          </div>
+        e.preventDefault();
 
-          <div className="form-group">
-            <label>Marks Obtained</label>
-            <input
-              type="number"
-              name="marks_obtained"
-              placeholder="Enter marks obtained"
-              value={edit.marks_obtained}
-              onChange={handlechange}
-              required
-            />
-          </div>
+        const token = localStorage.getItem("token");
 
-          <div className="form-group">
-            <label>Total Marks</label>
-            <input
-              type="number"
-              name="total_marks"
-              placeholder="Enter total marks"
-              value={edit.total_marks}
-              onChange={handlechange}
-              required
-            />
-          </div>
+        fetch(`http://127.0.0.1:8000/marks/${data.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(update)
+        })
+        .then((response) => response.json())
+        .then((result) => {
 
-          <div className="form-group">
-            <label>Grade</label>
-            <input
-              type="text"
-              name="grade"
-              placeholder="Enter grade"
-              value={edit.grade}
-              onChange={handlechange}
-              required
-            />
-          </div>
+            console.log(result);
 
-          <div className="button-group">
-            <button type="submit" className="edit-btn">
-              Update
-            </button>
+            alert("Marks updated successfully");
 
-            <button type="button" className="cancel-btn" onClick={close}>
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+            refresh();
+            close();
+
+        })
+        .catch((error) => {
+
+            console.log(error);
+
+            alert("Update failed");
+
+        });
+
+    };
+
+
+    return (
+
+        <div className="editmarks-overlay">
+
+            <div className="editmarks-container">
+
+                <h2 className="editmarks-title">
+                    Edit Marks
+                </h2>
+
+
+                <form
+                    className="editmarks-form"
+                    onSubmit={marks}
+                >
+
+                    {/* STUDENT ID */}
+
+                    <div className="form-group">
+
+                        <label>Student ID</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="text"
+                            name="student_id"
+                            value={update.student_id}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* NAME */}
+
+                    <div className="form-group">
+
+                        <label>Student Name</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="text"
+                            name="name"
+                            value={update.name}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* SUBJECT */}
+
+                    <div className="form-group">
+
+                        <label>Subject</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="text"
+                            name="subject"
+                            value={update.subject}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* EXAM */}
+
+                    <div className="form-group">
+
+                        <label>Exam Type</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="text"
+                            name="exam"
+                            value={update.exam}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* MARKS */}
+
+                    <div className="form-group">
+
+                        <label>Marks Obtained</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="number"
+                            name="marks_obtained"
+                            value={update.marks_obtained}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* TOTAL */}
+
+                    <div className="form-group">
+
+                        <label>Total Marks</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="number"
+                            name="total"
+                            value={update.total}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* GRADE */}
+
+                    <div className="form-group">
+
+                        <label>Grade</label>
+
+                        <input
+                            className="editmarks-input"
+                            type="text"
+                            name="grade"
+                            value={update.grade}
+                            onChange={change}
+                            required
+                        />
+
+                    </div>
+
+
+                    {/* BUTTONS */}
+
+                    <div className="editmarks-buttons">
+
+                        <button
+                            className="editmarks-btn submit-btn"
+                            type="submit"
+                        >
+                            Update
+                        </button>
+
+                        <button
+                            className="editmarks-btn cancel-btn"
+                            type="button"
+                            onClick={close}
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    );
 };
 
 export default EditMarks;

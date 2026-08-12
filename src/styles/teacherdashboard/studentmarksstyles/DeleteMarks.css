@@ -1,57 +1,62 @@
-.delete-marks {
-    width: 450px;
-    margin: 100px auto;
-    padding: 35px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-}
-
-.delete-marks h1 {
-    margin: 0 0 20px;
-    font-size: 28px;
-    color: #333;
-}
-
-.delete-marks p {
-    margin: 0 0 30px;
-    font-size: 16px;
-    color: #666;
-}
-
-.delete-btn {
+.delete-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
     display: flex;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+    z-index: 9999;
 }
 
-.delete-btn button {
-    width: 120px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
+.delete-modal {
+    width: 480px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.delete-modal h2 {
+    margin: 0;
+    font-size: 28px;
     font-weight: 600;
+    color: #111;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.delete-btn123 button,
+.cancel-btn123 button {
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
     cursor: pointer;
 }
 
-/* Delete button */
-.delete-btn button:first-child {
-    background-color: #dc3545;
-    color: white;
+.delete-btn123 button {
+    background-color: #ed2939;
 }
 
-.delete-btn button:first-child:hover {
-    background-color: #b02a37;
+.cancel-btn123 button {
+    background-color: #737d86;
 }
 
-/* Cancel button */
-.delete-btn button:last-child {
-    background-color: #6c757d;
-    color: white;
+.delete-btn123 button:hover {
+    background-color: #d92131;
 }
 
-.delete-btn button:last-child:hover {
-    background-color: #5a6268;
+.cancel-btn123 button:hover {
+    background-color: #626b73;
 }

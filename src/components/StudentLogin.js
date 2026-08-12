@@ -20,7 +20,7 @@ const StudentLogin = () => {
     e.preventDefault();
 
     const response = await fetch(
-      "http://127.0.0.1:8000/login",
+      "http://127.0.0.1:8000/StudentLogin",
       {
         method: "POST",
         headers: {
@@ -37,6 +37,7 @@ const StudentLogin = () => {
       alert( "Invalid email or password");
       return;
     }
+    localStorage.setItem("token", data.access_token);
     alert("Login successful");
     navigate("/studentdashboard");
   };
