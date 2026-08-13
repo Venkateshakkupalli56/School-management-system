@@ -1,0 +1,114 @@
+.edit-attendance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit-attendance-card {
+  width: 460px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.edit-attendance-title {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 24px;
+  color: #222;
+}
+
+.edit-attendance-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.edit-attendance-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.edit-attendance-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.edit-attendance-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+}
+
+.edit-attendance-field input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.12);
+}
+
+.edit-attendance-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.edit-attendance-update,
+.edit-attendance-cancel {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-attendance-update {
+  background: #4f46e5;
+  color: white;
+}
+
+.edit-attendance-cancel {
+  background: #e5e7eb;
+  color: #333;
+}
+
+.edit-attendance-update:hover,
+.edit-attendance-cancel:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .edit-attendance-card {
+    width: calc(100% - 40px);
+    padding: 22px;
+  }
+
+  .edit-attendance-form {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-attendance-buttons {
+    grid-column: auto;
+    flex-direction: column;
+  }
+
+  .edit-attendance-update,
+  .edit-attendance-cancel {
+    width: 100%;
+  }
+}

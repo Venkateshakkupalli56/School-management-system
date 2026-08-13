@@ -1,0 +1,81 @@
+.delete-attendance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-attendance-card {
+  width: 380px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.delete-attendance-title {
+  margin: 0 0 15px;
+  font-size: 22px;
+  color: #222;
+}
+
+.delete-attendance-message {
+  margin: 0 0 25px;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.delete-attendance-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.delete-attendance-confirm,
+.delete-attendance-cancel {
+  padding: 11px 25px;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-attendance-confirm {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.delete-attendance-cancel {
+  background: #e5e7eb;
+  color: #333333;
+}
+
+.delete-attendance-confirm:hover,
+.delete-attendance-cancel:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 500px) {
+  .delete-attendance-card {
+    width: calc(100% - 40px);
+    padding: 25px 20px;
+  }
+
+  .delete-attendance-buttons {
+    flex-direction: column;
+  }
+
+  .delete-attendance-confirm,
+  .delete-attendance-cancel {
+    width: 100%;
+  }
+}

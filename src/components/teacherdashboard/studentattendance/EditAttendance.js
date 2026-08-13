@@ -1,185 +1,135 @@
-import React, { useEffect, useState } from "react";
-import "../../../styles/teacherdashboard/studentattendancestyles/AddAttendance.css";
+import React, { useState } from 'react'
+import '../../../styles/teacherdashboard/studentattendancestyles/EditAttendance.css';
 
-const EditAttendance = ({ id, close }) => {
-  const [attendance, setAttendance] = useState({
-    student_id: "",
-    name: "",
-    total_classes: "",
-    present: "",
-    absent: "",
-  });
+const EditAttendance = ({ close, data }) => {
 
-  // Get existing attendance data
-  useEffect(() => {
-    const fetchAttendance = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:8000/attendance/${id}`
-        );
+    const [editdata, setEditdata] = useState({
+        student_id: data.student_id,
+        name: data.name,
+        total_classes: data.total_classes,
+        present: data.present
+    })
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch attendance");
-        }
-
-        const data = await response.json();
-
-        console.log("Attendance data:", data);
-
-        setAttendance({
-          student_id: data.student_id,
-          name: data.name,
-          total_classes: data.total_classes,
-          present: data.present,
-          absent: data.absent,
-        });
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    if (id) {
-      fetchAttendance();
+    const handlechange = (e) => {
+        setEditdata({
+            ...editdata,
+            [e.target.name]: e.target.value
+        })
     }
-  }, [id]);
 
-  const handleChange = (e) => {
-    setAttendance({
-      ...attendance,
-      [e.target.name]: e.target.value,
-    });
-  };
+    const updateattendance = (e) => {
+        e.preventDefault();
 
-  const updateAttendance = async (e) => {
-    e.preventDefault();
+        const token = localStorage.getItem('token')
 
-    console.log("ID:", id);
-    console.log("Data:", attendance);
+        fetch(`http://127.0.0.1:8000/attendance/${data.id}`, {
+            method: 'PUT',
 
-    try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/attendance/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            student_id: attendance.student_id,
-            name: attendance.name,
-            total_classes: Number(attendance.total_classes),
-            present: Number(attendance.present),
-            absent: Number(attendance.absent),
-          }),
-        }
-      );
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
 
-      const data = await response.json();
-
-      console.log("Status:", response.status);
-      console.log("Response:", data);
-
-      if (response.ok) {
-        alert("Attendance updated successfully");
-        close();
-      } else {
-        alert("Attendance cannot be updated");
-        console.log("Error:", data);
-      }
-    } catch (error) {
-      console.error("Update error:", error);
-      alert("Something went wrong while updating attendance");
+            body: JSON.stringify(editdata)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            alert('Attendance updated successfully')
+        })
+        .catch((error) => {
+            console.log(error);
+            alert('Attendance cannot be updated')
+        })
     }
-  };
 
-  return (
-    <div className="attendance-form-container">
-      <div className="attendance-form">
+    return (
+        <div className="edit-attendance-overlay">
 
-        <h2>Edit Attendance</h2>
+            <div className="edit-attendance-card">
 
-        <form onSubmit={updateAttendance}>
+                <h2 className="edit-attendance-title">
+                    Edit Attendance
+                </h2>
 
-          <div className="attendance-field">
-            <label>Student ID</label>
-            <input
-              type="text"
-              name="student_id"
-              value={attendance.student_id}
-              placeholder="Enter student_id"
-              onChange={handleChange}
-              required
-            />
-          </div>
+                <form
+                    className="edit-attendance-form"
+                    onSubmit={updateattendance}
+                >
 
-          <div className="attendance-field">
-            <label>Student Name</label>
-            <input
-              type="text"
-              name="name"
-              value={attendance.name}
-              placeholder="Enter student name"
-              onChange={handleChange}
-              required
-            />
-          </div>
+                    <div className="edit-attendance-field">
+                        <label>Student ID</label>
 
-          <div className="attendance-field">
-            <label>Total Classes</label>
-            <input
-              type="number"
-              name="total_classes"
-              value={attendance.total_classes}
-              placeholder="Enter total classes"
-              onChange={handleChange}
-              required
-            />
-          </div>
+                        <input
+                            type="text"
+                            name="student_id"
+                            placeholder="Enter Student ID"
+                            value={editdata.student_id}
+                            onChange={handlechange}
+                        />
+                    </div>
 
-          <div className="attendance-field">
-            <label>Present Classes</label>
-            <input
-              type="number"
-              name="present"
-              value={attendance.present}
-              placeholder="Enter present classes"
-              onChange={handleChange}
-              required
-            />
-          </div>
+                    <div className="edit-attendance-field">
+                        <label>Student Name</label>
 
-          <div className="attendance-field">
-            <label>Absent Classes</label>
-            <input
-              type="number"
-              name="absent"
-              value={attendance.absent}
-              placeholder="Enter absent classes"
-              onChange={handleChange}
-              required
-            />
-          </div>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter student name"
+                            value={editdata.name}
+                            onChange={handlechange}
+                        />
+                    </div>
 
-          <div className="attendance-buttons">
+                    <div className="edit-attendance-field">
+                        <label>Total Classes</label>
 
-            <button type="submit">
-              Update Attendance
-            </button>
+                        <input
+                            type="number"
+                            name="total_classes"
+                            placeholder="Enter total classes"
+                            value={editdata.total_classes}
+                            onChange={handlechange}
+                        />
+                    </div>
 
-            <button
-              type="button"
-              onClick={close}
-            >
-              Cancel
-            </button>
+                    <div className="edit-attendance-field">
+                        <label>Present Classes</label>
 
-          </div>
+                        <input
+                            type="number"
+                            name="present"
+                            placeholder="Enter present classes"
+                            value={editdata.present}
+                            onChange={handlechange}
+                        />
+                    </div>
 
-        </form>
+                    <div className="edit-attendance-buttons">
 
-      </div>
-    </div>
-  );
-};
+                        <button
+                            type="submit"
+                            className="edit-attendance-update"
+                        >
+                            Update Attendance
+                        </button>
 
-export default EditAttendance;
+                        <button
+                            type="button"
+                            className="edit-attendance-cancel"
+                            onClick={close}
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default EditAttendance

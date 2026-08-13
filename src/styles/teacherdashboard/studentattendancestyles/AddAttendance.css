@@ -1,0 +1,102 @@
+.add-attendance {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.add-attendance form {
+  width: 460px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+.add-attendance h2 {
+  margin: 0 0 25px;
+  text-align: center;
+  color: #123b82;
+  font-size: 24px;
+}
+
+.attendance-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.attendance-field label {
+  margin-bottom: 7px;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.attendance-field input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #374151;
+  font-size: 15px;
+}
+
+.attendance-field input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.attendance-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.attendance-buttons button {
+  flex: 1;
+  height: 46px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.attendance-buttons button[type="submit"] {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.attendance-buttons button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.attendance-buttons button[type="button"] {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.attendance-buttons button[type="button"]:hover {
+  background: #d1d5db;
+}
+
+@media (max-width: 600px) {
+  .add-attendance form {
+    width: calc(100% - 30px);
+    padding: 25px 20px;
+  }
+
+  .attendance-buttons {
+    flex-direction: column;
+  }
+}
