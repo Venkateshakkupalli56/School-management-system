@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
+import '../../../styles/teacherdashboard/studenthomework/EditHomework.css';
+const EditHomework = ({ id, homework, close,refresh }) => {
 
-const EditHomework = ({ homework_id, close }) => {
   const [edithomework, setEdithomework] = useState({
-    teacher_id: '',
-    date: '',
-    class_name: '',
-    subject: '',
-    homework: ''
+    date: homework.date,
+    class_name: homework.class_name,
+    subject: homework.subject,
+    homework: homework.homework
   });
 
   const updatechange = (e) => {
+
     setEdithomework({
       ...edithomework,
       [e.target.name]: e.target.value
     });
+
   };
 
   const Edit = async (e) => {
+
     e.preventDefault();
 
-    // console.log("Homework ID:", id);
+    console.log("Homework ID:", id);
     console.log("Data:", edithomework);
 
+    const token = localStorage.getItem('token');
+
     const edithome = await fetch(
-      `http://127.0.0.1:8000/homework/update/${homework_id}`,
+      `http://127.0.0.1:8000/update_homework?id=${id}`,
       {
         method: 'PUT',
+
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
+
         body: JSON.stringify(edithomework)
       }
     );
@@ -38,41 +46,31 @@ const EditHomework = ({ homework_id, close }) => {
     console.log(data);
 
     if (edithome.ok) {
+
       alert('Homework updated successfully');
+      refresh()
       close();
+
     } else {
+
       alert('Homework cannot be updated');
+
       console.log(data);
+
     }
   };
 
   return (
     <div className="homework-overlay">
+
       <div className="homework">
 
         <form onSubmit={Edit}>
 
           <h2>Edit Homework</h2>
 
-          {/* Teacher ID */}
           <div className="home-work">
-            <label htmlFor="teacher_id">
-              Teacher ID
-            </label>
 
-            <input
-              type="text"
-              id="teacher_id"
-              name="teacher_id"
-              placeholder="Enter Teacher ID"
-              value={edithomework.teacher_id}
-              onChange={updatechange}
-              required
-            />
-          </div>
-
-          {/* Date */}
-          <div className="home-work">
             <label htmlFor="date">
               Date
             </label>
@@ -85,10 +83,12 @@ const EditHomework = ({ homework_id, close }) => {
               onChange={updatechange}
               required
             />
+
           </div>
 
-          {/* Class Name */}
+
           <div className="home-work">
+
             <label htmlFor="class_name">
               Class Name
             </label>
@@ -102,10 +102,12 @@ const EditHomework = ({ homework_id, close }) => {
               onChange={updatechange}
               required
             />
+
           </div>
 
-          {/* Subject */}
+
           <div className="home-work">
+
             <label htmlFor="subject">
               Subject
             </label>
@@ -119,10 +121,12 @@ const EditHomework = ({ homework_id, close }) => {
               onChange={updatechange}
               required
             />
+
           </div>
 
-          {/* Homework */}
+
           <div className="home-work">
+
             <label htmlFor="homework">
               Homework
             </label>
@@ -135,28 +139,24 @@ const EditHomework = ({ homework_id, close }) => {
               onChange={updatechange}
               required
             />
+
           </div>
 
-          {/* Buttons */}
+
           <div className="homework-buttons">
 
             <button
               type="submit"
-              style={{
-                color: 'white',
-                backgroundColor: '#007BFF'
-              }}
+              className="update-homework-btn"
             >
               Update Homework
             </button>
 
+
             <button
               type="button"
+              className="cancel-homework-btn"
               onClick={close}
-              style={{
-                color: 'white',
-                backgroundColor: '#DC3545'
-              }}
             >
               Cancel
             </button>
@@ -166,6 +166,7 @@ const EditHomework = ({ homework_id, close }) => {
         </form>
 
       </div>
+
     </div>
   );
 };

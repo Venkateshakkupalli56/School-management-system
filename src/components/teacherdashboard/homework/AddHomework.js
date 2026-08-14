@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import '../../../styles/teacherdashboard/studenthomework/StudentHomework.css';
+import '../../../styles/teacherdashboard/studenthomework/AddHomework.css';
 
 const AddHomework = ({ close }) => {
+
   const [homework, setHomework] = useState({
-    teacher_id: '',
     date: '',
     class_name: '',
     subject: '',
@@ -20,12 +20,15 @@ const AddHomework = ({ close }) => {
   const Homework = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem('token');
+
     const stdhomework = await fetch(
-      'http://127.0.0.1:8000/homework/add_homework',
+      'http://127.0.0.1:8000/add_homework',
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(homework)
       }
@@ -37,7 +40,13 @@ const AddHomework = ({ close }) => {
 
     if (stdhomework.ok) {
       alert('Homework added successfully');
-      close();
+      // close();
+      setHomework({
+        date:'',
+        class_name:'',
+        subject:'',
+        homework:''
+      })
     } else {
       alert('Homework cannot be added');
     }
@@ -45,6 +54,7 @@ const AddHomework = ({ close }) => {
 
   return (
     <div className="homework-overlay">
+
       <div className="homework">
 
         <form onSubmit={Homework}>
@@ -52,22 +62,7 @@ const AddHomework = ({ close }) => {
           <h2>Add Homework</h2>
 
           <div className="home-work">
-            <label htmlFor="teacher_id">
-              Teacher ID
-            </label>
 
-            <input
-              type="number"
-              id="teacher_id"
-              placeholder="Enter Teacher ID"
-              name="teacher_id"
-              value={homework.teacher_id}
-              onChange={handlechange}
-              required
-            />
-          </div>
-
-          <div className="home-work">
             <label htmlFor="date">
               Date
             </label>
@@ -80,9 +75,11 @@ const AddHomework = ({ close }) => {
               onChange={handlechange}
               required
             />
+
           </div>
 
           <div className="home-work">
+
             <label htmlFor="class_name">
               Class Name
             </label>
@@ -90,15 +87,17 @@ const AddHomework = ({ close }) => {
             <input
               type="text"
               id="class_name"
-              placeholder="Enter Class Name"
               name="class_name"
+              placeholder="Enter Class Name"
               value={homework.class_name}
               onChange={handlechange}
               required
             />
+
           </div>
 
           <div className="home-work">
+
             <label htmlFor="subject">
               Subject
             </label>
@@ -106,31 +105,38 @@ const AddHomework = ({ close }) => {
             <input
               type="text"
               id="subject"
-              placeholder="Enter Subject Name"
               name="subject"
+              placeholder="Enter Subject Name"
               value={homework.subject}
               onChange={handlechange}
               required
             />
+
           </div>
 
           <div className="home-work">
+
             <label htmlFor="homework">
               Homework
             </label>
 
             <textarea
               id="homework"
-              placeholder="Enter Homework"
               name="homework"
+              placeholder="Enter Homework"
               value={homework.homework}
               onChange={handlechange}
               required
             />
+
           </div>
 
           <div className="homework-buttons">
-            <button type="submit" className="add-homework-btn">
+
+            <button
+              type="submit"
+              className="add-homework-btn"
+            >
               Add Homework
             </button>
 
@@ -141,11 +147,13 @@ const AddHomework = ({ close }) => {
             >
               Cancel
             </button>
+
           </div>
 
         </form>
 
       </div>
+
     </div>
   );
 };

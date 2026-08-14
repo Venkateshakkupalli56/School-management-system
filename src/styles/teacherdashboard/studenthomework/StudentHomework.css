@@ -1,0 +1,211 @@
+.student-homework {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px 60px;
+  background-color: #f5f7fb;
+  box-sizing: border-box;
+}
+
+.homework-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.homework-search form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.homework-search input {
+  width: 450px;
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.homework-search input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.12);
+}
+
+.homework-search button {
+  width: 110px;
+  height: 54px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4f46e5;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.homework-search button:hover {
+  background-color: #4338ca;
+}
+
+.homework-add-container {
+  display: flex;
+  align-items: center;
+}
+
+.homework-add-button {
+  width: 200px;
+  height: 54px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2864e6;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.homework-add-button:hover {
+  background-color: #1d4ed8;
+}
+
+.homework-table-container {
+  width: 100%;
+  padding: 12px 26px 25px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.homework-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.homework-table th {
+  height: 54px;
+  padding: 0 12px;
+  background-color: #1e448a;
+  color: white;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.homework-table th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.homework-table th:last-child {
+  border-top-right-radius: 14px;
+  border-right: none;
+}
+
+.homework-table td {
+  height: 54px;
+  padding: 0 12px;
+  background-color: white;
+  color: #222;
+  border-right: 1px solid #d9dee7;
+  border-bottom: 1px solid #d9dee7;
+  font-size: 16px;
+  text-align: center;
+}
+
+.homework-table tbody tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.homework-table tbody tr:hover td {
+  background-color: #f1f5f9;
+}
+
+.homework-table td:last-child {
+  border-right: none;
+}
+
+.homework-actions {
+  white-space: nowrap;
+}
+
+.homework-edit-button {
+  min-width: 62px;
+  height: 36px;
+  margin-right: 7px;
+  padding: 0 13px;
+  border: none;
+  border-radius: 7px;
+  background-color: #2864e6;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.homework-edit-button:hover {
+  background-color: #1d4ed8;
+}
+
+.homework-delete-button {
+  min-width: 68px;
+  height: 36px;
+  padding: 0 13px;
+  border: none;
+  border-radius: 7px;
+  background-color: #e3262e;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.homework-delete-button:hover {
+  background-color: #c91d24;
+}
+
+@media (max-width: 900px) {
+  .student-homework {
+    padding: 25px 20px;
+  }
+
+  .homework-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .homework-search form {
+    width: 100%;
+  }
+
+  .homework-search input {
+    width: 100%;
+  }
+
+  .homework-search button {
+    width: 110px;
+  }
+
+  .homework-add-button {
+    width: 200px;
+  }
+
+  .homework-table-container {
+    padding: 12px 15px 20px;
+  }
+}
