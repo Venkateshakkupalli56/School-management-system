@@ -1,79 +1,164 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+.subjects-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.marks-container{
-    padding:25px;
-    margin-top: 100px;
+.subjects-header {
+  margin-bottom: 18px;
 }
 
-.marks-header{
-    margin-bottom:25px;
+.subjects-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #14213d;
 }
 
-.marks-header h2{
-    color:#0d47a1;
-    font-size:28px;
+.subjects-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #777;
 }
 
-.marks-table-container{
-    background:#fff;
-    border-radius:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
-    overflow-x:auto;
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.marks-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:700px;
+.subject-card {
+  background: #fff !important;
+  border: 1px solid #e7e9ed;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.marks-table th{
-    background:#0d47a1;
-    color:#fff;
-    padding:15px;
-    text-align:center;
-    font-size:17px;
+.subject-card:hover,
+.subject-card:focus,
+.subject-card:active {
+  background: #fff !important;
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
 }
 
-.marks-table td{
-    padding:15px;
-    text-align:center;
-    font-size:16px;
-    background-color: white;
-}
-@media(max-width:768px){
-
-    .marks-container{
-        padding:15px;
-    }
-
-    .marks-header h2{
-        font-size:22px;
-    }
-
-    .marks-table th,
-    .marks-table td{
-        padding:12px;
-        font-size:14px;
-    }
-
+.subject-image {
+  width: 100%;
+  height: 185px;
+  background: #f5f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-@media(max-width:480px){
+.subject-image img {
+  width: 90%;
+  height: 95%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
 
-    .marks-header h2{
-        font-size:20px;
-    }
+.subject-content {
+  padding: 12px 14px;
+  background: #fff !important;
+}
 
-    .marks-table th,
-    .marks-table td{
-        font-size:13px;
-        padding:10px;
-    }
+.subject-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
 
+.subject-heading h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #14213d;
+  white-space: nowrap;
+}
+
+.subject-heading span {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.subject-content p {
+  margin: 7px 0 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6b7280;
+  min-height: 34px;
+}
+
+.subject-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+.view-book-btn,
+.translate-btn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.view-book-btn {
+  background: #14213d;
+  color: #fff;
+}
+
+.translate-btn {
+  background: #eef4ff;
+  color: #2563eb;
+}
+
+.view-book-btn:hover,
+.view-book-btn:focus,
+.view-book-btn:active {
+  background: #14213d;
+  color: #fff;
+}
+
+.translate-btn:hover,
+.translate-btn:focus,
+.translate-btn:active {
+  background: #eef4ff;
+  color: #2563eb;
+}
+
+@media (max-width: 1000px) {
+  .subjects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .subjects-container {
+    padding: 14px;
+  }
+
+  .subjects-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .subject-image {
+    height: 180px;
+  }
+
+  .subject-heading h3 {
+    font-size: 15px;
+  }
 }
