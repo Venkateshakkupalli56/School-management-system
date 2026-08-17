@@ -32,6 +32,7 @@ import AddAttendance from "./components/teacherdashboard/studentattendance/AddAt
 import StudentHomework from "./components/teacherdashboard/homework/StudentHomework";
 import AddHomework from "./components/teacherdashboard/homework/AddHomework";
 import EditHomework from "./components/teacherdashboard/homework/EditHomework";
+import StudentProfile from "./components/studentdashboard/StudentProfile";
 
 const App = () => {
   return (
@@ -64,6 +65,7 @@ const App = () => {
         <Route path="subjects" element={<Subject/>}></Route>
         <Route path="homework" element={<Homework/>}></Route>
         <Route path="attendance" element={<Attendance/>}></Route>
+        <Route path="profile" element={<StudentProfile/>}></Route>
       </Route>
       <Route path="/teacherdashboard" element={<TeacherDashboard />}>
      <Route path="studentmarks" element={<StudentMarks />}>
