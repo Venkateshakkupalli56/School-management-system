@@ -33,6 +33,8 @@ import StudentHomework from "./components/teacherdashboard/homework/StudentHomew
 import AddHomework from "./components/teacherdashboard/homework/AddHomework";
 import EditHomework from "./components/teacherdashboard/homework/EditHomework";
 import StudentProfile from "./components/studentdashboard/StudentProfile";
+import TeacherProfile from "./components/teacherdashboard/TeacherProfile";
+import TeacherSubject from "./components/teacherdashboard/TeacherSubject";
 
 const App = () => {
   return (
@@ -80,6 +82,8 @@ const App = () => {
     <Route path="addhomework" element={<AddHomework/>}/>
     <Route path="edithomework" element={<EditHomework/>}/>
     </Route>
+    <Route path="profile" element={<TeacherProfile/>}></Route>
+    <Route path="subjects" element={<TeacherSubject/>}></Route>
       </Route>
     </Routes>
   );

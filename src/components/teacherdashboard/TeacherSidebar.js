@@ -9,11 +9,11 @@ const TeacherSidebar = ({ sidebarOpen, closeSidebar }) => {
       <h2 className="logo">Teacher</h2>
 
       <NavLink to="/teacher/dashboard" onClick={closeSidebar}>Dashboard</NavLink>
-      <NavLink to="/teacher/profile" onClick={closeSidebar}>Profile</NavLink>
-      <NavLink to="/teacher/students" onClick={closeSidebar}>Students</NavLink>
+      <NavLink to="/teacherdashboard/profile" onClick={closeSidebar}>Profile</NavLink>
+      {/* <NavLink to="/teacher/students" onClick={closeSidebar}>Students</NavLink> */}
       <NavLink to="/teacherdashboard/studentmarks/addmarks" onClick={closeSidebar}>Marks</NavLink>
       <NavLink to="/teacherdashboard/studentattendance" onClick={closeSidebar}>Attendance</NavLink>
-      <NavLink to="/teacher/subjects" onClick={closeSidebar}>Subjects</NavLink>
+      <NavLink to="/teacherdashboard/subjects" onClick={closeSidebar}>Subjects</NavLink>
       <NavLink to="/teacherdashboard/homework" onClick={closeSidebar}>Homework</NavLink>
       <NavLink to="/teacher/results" onClick={closeSidebar}>Results</NavLink>
       <NavLink to="/teacher/timetable" onClick={closeSidebar}>Timetable</NavLink>
