@@ -1,0 +1,193 @@
+.admin-navbar {
+    height: 70px;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+    box-sizing: border-box;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Left */
+
+.admin-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-navbar-left h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #172033;
+}
+
+.admin-menu-btn {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    color: #374151;
+}
+
+/* Right */
+
+.admin-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.admin-notification {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Profile */
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+}
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #172033;
+}
+
+.admin-role {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.admin-dropdown {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+/* Mobile */
+/* =========================
+   Menu Button
+========================= */
+
+.admin-menu-btn {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 24px;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #1e293b;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 768px) {
+
+    .admin-menu-btn {
+        display: flex;
+    }
+
+    .admin-navbar-left {
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .admin-navbar-left h2 {
+        font-size: 18px;
+    }
+
+    .admin-navbar-right {
+        gap: 8px;
+    }
+
+    .admin-info {
+        display: none;
+    }
+
+    .admin-dropdown {
+        display: none;
+    }
+
+    .admin-profile {
+        padding: 0;
+    }
+}
+@media (max-width: 768px) {
+
+    .admin-navbar {
+        padding: 0 15px;
+    }
+
+    .admin-navbar-left h2 {
+        font-size: 17px;
+    }
+
+    .admin-info {
+        display: none;
+    }
+
+    .admin-dropdown {
+        display: none;
+    }
+
+}

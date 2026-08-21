@@ -133,6 +133,7 @@ const StudentMarks = () => {
               <th>Subject</th>
               <th>Marks Obtained</th>
               <th>Total</th>
+              <th>Exam</th>
               <th>Grade</th>
               <th>Action</th>
             </tr>
@@ -150,8 +151,10 @@ const StudentMarks = () => {
                 <td>{item.subject}</td>
 
                 <td>{item.marks_obtained}</td>
-
+                
                 <td>{item.total}</td>
+
+                <td>{item.exam}</td>
 
                 <td>{item.grade}</td>
 

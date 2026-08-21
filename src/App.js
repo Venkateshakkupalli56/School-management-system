@@ -35,6 +35,10 @@ import EditHomework from "./components/teacherdashboard/homework/EditHomework";
 import StudentProfile from "./components/studentdashboard/StudentProfile";
 import TeacherProfile from "./components/teacherdashboard/TeacherProfile";
 import TeacherSubject from "./components/teacherdashboard/TeacherSubject";
+import StudentResult from "./components/studentdashboard/StudentResult";
+import AdminLogin from "./components/AdminLogin";
+
+import AdminDashboard from "./components/admindashboard/AdminDashboard";
 
 const App = () => {
   return (
@@ -50,6 +54,7 @@ const App = () => {
               <Route path="/facilities" element={<Facilities />} />
               <Route path="/studentlogin" element={<StudentLogin />} />
               <Route path="/teacherlogin" element={<TeacherLogin />} />
+              <Route path="/adminlogin" element={<AdminLogin/>}/>
               <Route path="/studentregistration" element={<StudentRegisteration/>} />
               <Route path="/teacherregister" element={<TeacherRegisteration/>} />
               <Route path="/contact" element={<ContactUs />} />
@@ -68,6 +73,7 @@ const App = () => {
         <Route path="homework" element={<Homework/>}></Route>
         <Route path="attendance" element={<Attendance/>}></Route>
         <Route path="profile" element={<StudentProfile/>}></Route>
+        <Route path="results" element={<StudentResult/>}></Route>
       </Route>
       <Route path="/teacherdashboard" element={<TeacherDashboard />}>
      <Route path="studentmarks" element={<StudentMarks />}>
@@ -84,6 +90,9 @@ const App = () => {
     </Route>
     <Route path="profile" element={<TeacherProfile/>}></Route>
     <Route path="subjects" element={<TeacherSubject/>}></Route>
+      </Route>
+      <Route>
+        <Route path="/admindashboard" element={<AdminDashboard/>}></Route>
       </Route>
     </Routes>
   );
